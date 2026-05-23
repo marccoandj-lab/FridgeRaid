@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Heart, IceCream, Compass, User } from 'lucide-react'
+import { Heart, IceCream, Compass, User, LayoutList } from 'lucide-react'
 import { useFavorites } from '@/hooks/useFavorites'
 import { useAuth } from '@/lib/AuthProvider'
 import { cn } from '@/lib/utils'
@@ -21,6 +21,15 @@ export function Navbar() {
         </Link>
 
         <div className="flex items-center gap-4">
+          <Link
+            href="/categories"
+            className={cn(
+              'flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground',
+            )}
+          >
+            <LayoutList size={18} />
+            <span className="hidden sm:inline">Categories</span>
+          </Link>
           <Link
             href="/continents"
             className={cn(

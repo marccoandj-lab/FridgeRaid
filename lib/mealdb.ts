@@ -77,15 +77,39 @@ export async function getMealsByIngredients(
     idSets.every((set) => set.has(id))
   );
 
-  const seen = new Set<string>();
-  const unique: MealSummary[] = [];
-  for (const meal of results[0]) {
-    if (intersectionIds.includes(meal.idMeal) && !seen.has(meal.idMeal)) {
-      seen.add(meal.idMeal);
-      unique.push(meal);
+  if (intersectionIds.length === 0) return [];
+
+  const verified: MealSummary[] = [];
+  const normalizedUserIngs = ingredients.map((i) => normalizeIngredient(i));
+
+  for (const id of intersectionIds) {
+    const detail = await fetchMealById(id);
+    if (!detail) continue;
+
+    const mealIngs = parseIngredients(detail).map((i) =>
+      normalizeIngredient(i.name)
+    );
+
+    const hasAll = normalizedUserIngs.every((ui) =>
+      mealIngs.some((mi) => mi === ui || mi.includes(ui) || ui.includes(mi))
+    );
+
+    if (hasAll) {
+      verified.push({ idMeal: detail.idMeal, strMeal: detail.strMeal, strMealThumb: detail.strMealThumb });
     }
+
+    if (verified.length >= 20) break;
   }
-  return unique;
+
+  return verified;
+}
+
+function normalizeIngredient(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 export async function getRandomMeals(count = 8): Promise<MealSummary[]> {
@@ -141,6 +165,29 @@ export async function listAreas(): Promise<string[]> {
     `${BASE}/list.php?a=list`
   );
   return data?.meals?.map((m) => m.strArea) ?? [];
+}
+
+const catCache = new Map<string, MealSummary[]>();
+
+export async function fetchMealsByCategory(
+  category: string
+): Promise<MealSummary[]> {
+  const cached = catCache.get(category);
+  if (cached) return cached;
+
+  const data = await fetchJson<{ meals: MealSummary[] | null }>(
+    `${BASE}/filter.php?c=${encodeURIComponent(category)}`
+  );
+  const meals = data?.meals ?? [];
+  catCache.set(category, meals);
+  return meals;
+}
+
+export async function listCategories(): Promise<string[]> {
+  const data = await fetchJson<{ meals: { strCategory: string }[] | null }>(
+    `${BASE}/list.php?c=list`
+  );
+  return data?.meals?.map((m) => m.strCategory) ?? [];
 }
 
 export const CONTINENT_AREAS: Record<string, string[]> = {
