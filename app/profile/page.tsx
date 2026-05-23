@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import { User, Mail, LogOut, ChefHat, Calendar, IceCream } from 'lucide-react'
 import { Navbar } from '@/components/Navbar'
 import { useAuth } from '@/lib/AuthProvider'
+import { auth } from '@/lib/firebase'
 import { useFavorites } from '@/hooks/useFavorites'
 
 export default function ProfilePage() {
@@ -14,7 +15,7 @@ export default function ProfilePage() {
   const { favorites } = useFavorites()
 
   useEffect(() => {
-    if (!isLoading && !user) router.push('/auth')
+    if (!isLoading && !user && !auth.currentUser) router.push('/auth')
   }, [user, isLoading, router])
 
   if (isLoading || !user) return null

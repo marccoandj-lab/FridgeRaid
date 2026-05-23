@@ -15,6 +15,7 @@ import { useDailyMeals } from '@/hooks/useDailyMeals'
 import { Skeleton } from '@/components/ui/skeleton'
 import { cn } from '@/lib/utils'
 import { useAuth } from '@/lib/AuthProvider'
+import { auth } from '@/lib/firebase'
 
 export default function HomePage() {
   const router = useRouter()
@@ -24,7 +25,7 @@ export default function HomePage() {
   const { meals: dailyMeals, isLoading: dailyLoading } = useDailyMeals()
 
   useEffect(() => {
-    if (!authLoading && !user) router.replace('/auth')
+    if (!authLoading && !user && !auth.currentUser) router.replace('/auth')
   }, [authLoading, user, router])
 
   if (authLoading || !user) return null
