@@ -37,11 +37,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signIn = async (email: string, password: string) => {
     await signInWithEmailAndPassword(auth, email, password)
+    // Yield to let React commit the onAuthStateChanged state update
+    // before the caller navigates away — prevents redirect race condition
+    await new Promise<void>(resolve => setTimeout(resolve, 0))
   }
 
   const signUp = async (email: string, password: string, name: string) => {
     const cred = await createUserWithEmailAndPassword(auth, email, password)
     await updateProfile(cred.user, { displayName: name })
+    await new Promise<void>(resolve => setTimeout(resolve, 0))
   }
 
   const signInWithGoogle = async () => {
