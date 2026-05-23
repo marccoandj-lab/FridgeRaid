@@ -116,11 +116,9 @@ function ingredientMatches(user: string, meal: string): boolean {
   if (user === meal) return true;
   const uWords = user.split(" ");
   const mWords = meal.split(" ");
+  // Every word in user selection must exist in the meal's ingredient name
   const everyUinM = uWords.every((uw) => mWords.some((mw) => mw === uw));
-  if (everyUinM) return true;
-  const everyMinU = mWords.every((mw) => uWords.some((uw) => uw === mw));
-  if (everyMinU) return true;
-  return false;
+  return everyUinM;
 }
 
 export async function getRandomMeals(count = 8): Promise<MealSummary[]> {
