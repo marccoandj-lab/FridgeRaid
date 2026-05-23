@@ -18,6 +18,7 @@ export default function AuthPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isGoogleLoading, setIsGoogleLoading] = useState(false)
 
   useEffect(() => {
     if (user) router.push('/')
@@ -245,8 +246,23 @@ export default function AuthPage() {
           {/* Google sign in */}
           <button
             type="button"
-            onClick={signInWithGoogle}
-            className="flex w-full items-center justify-center gap-2.5 rounded-xl border border-amber-500/10 bg-background py-2.5 text-sm font-medium text-foreground transition-all hover:bg-amber-500/5 hover:border-amber-500/20"
+            disabled={isGoogleLoading}
+            onClick={async () => {
+              setError('')
+              setIsGoogleLoading(true)
+              try {
+                await signInWithGoogle()
+                router.push('/')
+              } catch (err: unknown) {
+                const msg = err instanceof Error ? err.message : ''
+                if (!msg.includes('popup-closed-by-user') && !msg.includes('cancelled-popup-request')) {
+                  setError('Google sign-in failed. Try again or use email.')
+                }
+              } finally {
+                setIsGoogleLoading(false)
+              }
+            }}
+            className="flex w-full items-center justify-center gap-2.5 rounded-xl border border-amber-500/10 bg-background py-2.5 text-sm font-medium text-foreground transition-all hover:bg-amber-500/5 hover:border-amber-500/20 disabled:opacity-60 disabled:cursor-not-allowed"
           >
             <svg viewBox="0 0 24 24" width={18} height={18} xmlns="http://www.w3.org/2000/svg">
               <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/>
