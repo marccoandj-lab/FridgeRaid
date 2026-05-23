@@ -34,24 +34,10 @@ export function useMealSearch(ingredients: string[]) {
           result = await getRandomMeals(INITIAL_BATCH_SIZE);
           ingredientResultsRef.current = [];
         } else {
-          // Get strict matches first
-          const strict = await getMealsByIngredients(ingredients);
-          const combined = [...strict];
-          
-          // If few strict matches, get expanded matches
-          if (combined.length < INITIAL_BATCH_SIZE) {
-            const expanded = await getExpandedMealsByIngredients(ingredients);
-            const seen = new Set(combined.map(m => m.idMeal));
-            for (const m of expanded) {
-              if (!seen.has(m.idMeal)) {
-                combined.push(m);
-                seen.add(m.idMeal);
-              }
-            }
-          }
-          
-          ingredientResultsRef.current = combined;
-          result = combined.slice(0, INITIAL_BATCH_SIZE);
+          // getMealsByIngredients now handles both strict and partial matches internally
+          const allMatches = await getMealsByIngredients(ingredients);
+          ingredientResultsRef.current = allMatches;
+          result = allMatches.slice(0, INITIAL_BATCH_SIZE);
           currentOffsetRef.current = result.length;
         }
 
@@ -62,11 +48,11 @@ export function useMealSearch(ingredients: string[]) {
         });
 
         setMeals(unique);
+        
+        // If we have ingredients and our initial load covered everything, 
+        // we might not have more ingredient-based recipes.
         if (ingredients.length > 0 && currentOffsetRef.current >= ingredientResultsRef.current.length) {
-          // If we've exhausted all ingredient-based matches, we could potentially stop or add random ones
-          // For "infinite" feel, we'll keep hasMore true but maybe random matches later?
-          // User asked for infinite, so let's set hasMore true if we can always get randoms
-          setHasMore(true);
+          setHasMore(false);
         }
       } catch (e) {
         setError(e instanceof Error ? e.message : "Failed to fetch meals");

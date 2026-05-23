@@ -70,33 +70,51 @@ export async function getMealsByIngredients(
     ingredients.map((ing) => fetchMealsByIngredient(ing))
   );
 
-  if (results.some((r) => r.length === 0)) return [];
-
+  // 1. Try Strict Intersection (AND logic)
   const idSets = results.map((meals) => new Set(meals.map((m) => m.idMeal)));
   const intersectionIds = [...idSets[0]].filter((id) =>
     idSets.every((set) => set.has(id))
   );
 
-  if (intersectionIds.length === 0) return [];
-
   const verified: MealSummary[] = [];
   const normalizedUserIngs = ingredients.map((i) => normalizeIngredient(i));
 
-  for (const id of intersectionIds) {
-    const detail = await fetchMealById(id);
-    if (!detail) continue;
+  if (intersectionIds.length > 0) {
+    for (const id of intersectionIds) {
+      const detail = await fetchMealById(id);
+      if (!detail) continue;
 
-    const mealIngs = parseIngredients(detail).map((i) =>
-      normalizeIngredient(i.name)
-    );
+      const mealIngs = parseIngredients(detail).map((i) =>
+        normalizeIngredient(i.name)
+      );
 
-    const hasAll = normalizedUserIngs.every((ui) =>
-      mealIngs.some((mi) => ingredientMatches(ui, mi))
-    );
+      const hasAll = normalizedUserIngs.every((ui) =>
+        mealIngs.some((mi) => ingredientMatches(ui, mi))
+      );
 
-    if (hasAll) {
-      verified.push({ idMeal: detail.idMeal, strMeal: detail.strMeal, strMealThumb: detail.strMealThumb });
+      if (hasAll) {
+        verified.push({ idMeal: detail.idMeal, strMeal: detail.strMeal, strMealThumb: detail.strMealThumb });
+      }
     }
+  }
+
+  // 2. If no strict matches found, use OR logic (any ingredient) but prioritize more matches
+  if (verified.length === 0) {
+    const mealCounts = new Map<string, { meal: MealSummary; count: number }>();
+    for (const ingredientMeals of results) {
+      for (const meal of ingredientMeals) {
+        const existing = mealCounts.get(meal.idMeal);
+        if (existing) {
+          existing.count++;
+        } else {
+          mealCounts.set(meal.idMeal, { meal, count: 1 });
+        }
+      }
+    }
+
+    return Array.from(mealCounts.values())
+      .sort((a, b) => b.count - a.count)
+      .map((item) => item.meal);
   }
 
   return verified;
