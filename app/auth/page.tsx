@@ -24,8 +24,6 @@ export default function AuthPage() {
     if (user) router.push('/')
   }, [user, router])
 
-  if (isLoading || user) return null
-
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
@@ -53,6 +51,8 @@ export default function AuthPage() {
       setIsSubmitting(false)
     }
   }, [email, password, name, mode, signIn, signUp, router])
+
+  if (isLoading || user) return null
 
   return (
     <div className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden bg-background px-4">
