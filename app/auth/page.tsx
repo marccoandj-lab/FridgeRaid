@@ -10,7 +10,7 @@ type Mode = 'login' | 'signup'
 
 export default function AuthPage() {
   const router = useRouter()
-  const { signIn, signUp, signInWithGoogle, user } = useAuth()
+  const { signIn, signUp, signInWithGoogle, user, isLoading } = useAuth()
   const [mode, setMode] = useState<Mode>('login')
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -24,7 +24,7 @@ export default function AuthPage() {
     if (user) router.push('/')
   }, [user, router])
 
-  if (user) return null
+  if (isLoading || user) return null
 
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault()
@@ -252,7 +252,6 @@ export default function AuthPage() {
               setIsGoogleLoading(true)
               try {
                 await signInWithGoogle()
-                router.push('/')
               } catch (err: unknown) {
                 const msg = err instanceof Error ? err.message : ''
                 if (!msg.includes('popup-closed-by-user') && !msg.includes('cancelled-popup-request')) {
