@@ -97,11 +97,38 @@ export async function getMealsByIngredients(
     if (hasAll) {
       verified.push({ idMeal: detail.idMeal, strMeal: detail.strMeal, strMealThumb: detail.strMealThumb });
     }
-
-    if (verified.length >= 20) break;
   }
 
   return verified;
+}
+
+export async function getExpandedMealsByIngredients(
+  ingredients: string[]
+): Promise<MealSummary[]> {
+  if (ingredients.length === 0) return [];
+
+  // Get all meals for each ingredient
+  const results = await Promise.all(
+    ingredients.map((ing) => fetchMealsByIngredient(ing))
+  );
+
+  // Flatten and count occurrences
+  const mealCounts = new Map<string, { meal: MealSummary; count: number }>();
+  for (const ingredientMeals of results) {
+    for (const meal of ingredientMeals) {
+      const existing = mealCounts.get(meal.idMeal);
+      if (existing) {
+        existing.count++;
+      } else {
+        mealCounts.set(meal.idMeal, { meal, count: 1 });
+      }
+    }
+  }
+
+  // Sort by count descending (most matches first)
+  return Array.from(mealCounts.values())
+    .sort((a, b) => b.count - a.count)
+    .map((item) => item.meal);
 }
 
 function normalizeIngredient(name: string): string {

@@ -1,8 +1,11 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import { getMealsByIngredients, getRandomMeals } from "@/lib/mealdb";
+import { getMealsByIngredients, getExpandedMealsByIngredients, getRandomMeals } from "@/lib/mealdb";
 import type { MealSummary } from "@/types/meal";
+
+const INITIAL_BATCH_SIZE = 12;
+const LOAD_MORE_SIZE = 8;
 
 export function useMealSearch(ingredients: string[]) {
   const [meals, setMeals] = useState<MealSummary[]>([]);
@@ -10,30 +13,61 @@ export function useMealSearch(ingredients: string[]) {
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [hasMore, setHasMore] = useState(true);
+  const seenIdsRef = useRef<Set<string>>(new Set());
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const ingredientResultsRef = useRef<MealSummary[]>([]);
+  const currentOffsetRef = useRef(0);
 
   useEffect(() => {
     if (timerRef.current) clearTimeout(timerRef.current);
 
     timerRef.current = setTimeout(async () => {
-      setIsLoading(true);
       setError(null);
       setHasMore(true);
+      seenIdsRef.current = new Set();
+      currentOffsetRef.current = 0;
+      setIsLoading(true);
 
       try {
-        const result =
-          ingredients.length === 0
-            ? await getRandomMeals(8)
-            : await getMealsByIngredients(ingredients);
+        let result: MealSummary[] = [];
+        if (ingredients.length === 0) {
+          result = await getRandomMeals(INITIAL_BATCH_SIZE);
+          ingredientResultsRef.current = [];
+        } else {
+          // Get strict matches first
+          const strict = await getMealsByIngredients(ingredients);
+          const combined = [...strict];
+          
+          // If few strict matches, get expanded matches
+          if (combined.length < INITIAL_BATCH_SIZE) {
+            const expanded = await getExpandedMealsByIngredients(ingredients);
+            const seen = new Set(combined.map(m => m.idMeal));
+            for (const m of expanded) {
+              if (!seen.has(m.idMeal)) {
+                combined.push(m);
+                seen.add(m.idMeal);
+              }
+            }
+          }
+          
+          ingredientResultsRef.current = combined;
+          result = combined.slice(0, INITIAL_BATCH_SIZE);
+          currentOffsetRef.current = result.length;
+        }
 
-        const seen = new Set<string>();
         const unique = result.filter((m) => {
-          if (seen.has(m.idMeal)) return false;
-          seen.add(m.idMeal);
+          if (seenIdsRef.current.has(m.idMeal)) return false;
+          seenIdsRef.current.add(m.idMeal);
           return true;
         });
+
         setMeals(unique);
-        if (unique.length < 8) setHasMore(false);
+        if (ingredients.length > 0 && currentOffsetRef.current >= ingredientResultsRef.current.length) {
+          // If we've exhausted all ingredient-based matches, we could potentially stop or add random ones
+          // For "infinite" feel, we'll keep hasMore true but maybe random matches later?
+          // User asked for infinite, so let's set hasMore true if we can always get randoms
+          setHasMore(true);
+        }
       } catch (e) {
         setError(e instanceof Error ? e.message : "Failed to fetch meals");
         setMeals([]);
@@ -52,15 +86,32 @@ export function useMealSearch(ingredients: string[]) {
     setIsLoadingMore(true);
 
     try {
-      const result =
-        ingredients.length === 0
-          ? await getRandomMeals(8)
-          : await getMealsByIngredients(ingredients);
+      let result: MealSummary[] = [];
+      if (ingredients.length === 0) {
+        result = await getRandomMeals(LOAD_MORE_SIZE);
+      } else {
+        const nextBatch = ingredientResultsRef.current.slice(
+          currentOffsetRef.current,
+          currentOffsetRef.current + LOAD_MORE_SIZE
+        );
+        
+        if (nextBatch.length > 0) {
+          result = nextBatch;
+          currentOffsetRef.current += nextBatch.length;
+        } else {
+          // If ingredient matches exhausted, fill with randoms for "infinite" experience
+          result = await getRandomMeals(LOAD_MORE_SIZE);
+        }
+      }
 
       setMeals((prev) => {
-        const seen = new Set(prev.map((m) => m.idMeal));
-        const newMeals = result.filter((m) => !seen.has(m.idMeal));
-        if (newMeals.length < 6) setHasMore(false);
+        const newMeals = result.filter((m) => !seenIdsRef.current.has(m.idMeal));
+        newMeals.forEach(m => seenIdsRef.current.add(m.idMeal));
+        
+        // If we didn't get any new meals from random, maybe we're truly at the end? 
+        // But getRandomMeals should usually give something.
+        if (newMeals.length === 0 && ingredients.length === 0) setHasMore(false);
+        
         return [...prev, ...newMeals];
       });
     } catch {

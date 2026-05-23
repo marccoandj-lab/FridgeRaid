@@ -155,7 +155,7 @@ export default function HomePage() {
               className="mb-4 text-xs text-muted-foreground"
             >
               {ingredients.length > 0
-                ? `${meals.length} recipes match your ingredients`
+                ? `Showing matching and recommended recipes for your ingredients`
                 : 'Infinite recipe inspiration'}
             </motion.p>
           )}
