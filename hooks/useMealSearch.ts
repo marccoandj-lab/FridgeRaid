@@ -99,8 +99,10 @@ export function useMealSearch(ingredients: string[]) {
           result = nextBatch;
           currentOffsetRef.current += nextBatch.length;
         } else {
-          // If ingredient matches exhausted, fill with randoms for "infinite" experience
-          result = await getRandomMeals(LOAD_MORE_SIZE);
+          // No more ingredient matches
+          setHasMore(false);
+          setIsLoadingMore(false);
+          return;
         }
       }
 
@@ -108,9 +110,14 @@ export function useMealSearch(ingredients: string[]) {
         const newMeals = result.filter((m) => !seenIdsRef.current.has(m.idMeal));
         newMeals.forEach(m => seenIdsRef.current.add(m.idMeal));
         
-        // If we didn't get any new meals from random, maybe we're truly at the end? 
-        // But getRandomMeals should usually give something.
-        if (newMeals.length === 0 && ingredients.length === 0) setHasMore(false);
+        if (newMeals.length === 0) {
+          if (ingredients.length === 0) {
+            // Random batch empty, stop
+            setHasMore(false);
+          } else {
+            setHasMore(false);
+          }
+        }
         
         return [...prev, ...newMeals];
       });
