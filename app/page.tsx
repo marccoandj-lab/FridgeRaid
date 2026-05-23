@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -12,11 +14,20 @@ import { useMealSearch } from '@/hooks/useMealSearch'
 import { useDailyMeals } from '@/hooks/useDailyMeals'
 import { Skeleton } from '@/components/ui/skeleton'
 import { cn } from '@/lib/utils'
+import { useAuth } from '@/lib/AuthProvider'
 
 export default function HomePage() {
+  const router = useRouter()
+  const { user, isLoading: authLoading } = useAuth()
   const { ingredients } = useIngredients()
   const { meals, isLoading, isLoadingMore, error, hasMore, loadMore } = useMealSearch(ingredients)
   const { meals: dailyMeals, isLoading: dailyLoading } = useDailyMeals()
+
+  useEffect(() => {
+    if (!authLoading && !user) router.replace('/auth')
+  }, [authLoading, user, router])
+
+  if (authLoading || !user) return null
 
   return (
     <>

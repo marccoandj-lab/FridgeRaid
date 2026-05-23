@@ -45,7 +45,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }
 
   const signInWithGoogle = async () => {
-    await signInWithPopup(auth, googleProvider)
+    try {
+      await signInWithPopup(auth, googleProvider)
+    } catch (err: unknown) {
+      if (err instanceof Error && err.message.includes('auth/popup-closed-by-user')) return
+      throw err
+    }
   }
 
   const logOut = async () => {
