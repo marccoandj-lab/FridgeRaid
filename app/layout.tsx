@@ -33,7 +33,9 @@ export default function RootLayout({
       className={`${playfair.variable} ${dmSans.variable} h-full antialiased dark`}
     >
       <body className="min-h-full flex flex-col">
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          <IngredientsProvider>{children}</IngredientsProvider>
+        </AuthProvider>
       </body>
     </html>
   );
