@@ -91,7 +91,7 @@ export async function getMealsByIngredients(
     );
 
     const hasAll = normalizedUserIngs.every((ui) =>
-      mealIngs.some((mi) => mi === ui || mi.includes(ui) || ui.includes(mi))
+      mealIngs.some((mi) => ingredientMatches(ui, mi))
     );
 
     if (hasAll) {
@@ -110,6 +110,17 @@ function normalizeIngredient(name: string): string {
     .replace(/[^a-z0-9\s]/g, "")
     .replace(/\s+/g, " ")
     .trim();
+}
+
+function ingredientMatches(user: string, meal: string): boolean {
+  if (user === meal) return true;
+  const uWords = user.split(" ");
+  const mWords = meal.split(" ");
+  const everyUinM = uWords.every((uw) => mWords.some((mw) => mw === uw));
+  if (everyUinM) return true;
+  const everyMinU = mWords.every((mw) => uWords.some((uw) => uw === mw));
+  if (everyMinU) return true;
+  return false;
 }
 
 export async function getRandomMeals(count = 8): Promise<MealSummary[]> {
