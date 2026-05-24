@@ -23,13 +23,19 @@ export const metadata: Metadata = {
   description:
     "Type in ingredients you have at home and instantly discover recipes you can make. No signup, no fuss.",
   manifest: "/manifest.json",
-  themeColor: "#f59e0b",
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
     title: "Fridge Raid",
   },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: "#f59e0b",
 };
 
 export default function RootLayout({
@@ -42,7 +48,7 @@ export default function RootLayout({
       lang="en"
       className={`${playfair.variable} ${dmSans.variable} h-full antialiased dark`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col pb-[calc(3.5rem+env(safe-area-inset-bottom,0px))] sm:pb-0">
         <AuthProvider>
           <IngredientsProvider>
             {children}

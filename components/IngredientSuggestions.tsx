@@ -72,7 +72,7 @@ export function IngredientSuggestions({
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -8 }}
         transition={{ duration: 0.15 }}
-        className="absolute left-0 right-0 top-full z-50 mt-1 max-h-72 overflow-y-auto rounded-lg border border-amber-500/20 bg-card shadow-2xl shadow-black/40"
+        className="absolute left-0 right-0 top-full z-50 mt-1 max-h-64 overflow-y-auto overscroll-contain rounded-lg border border-amber-500/20 bg-card shadow-2xl shadow-black/40 sm:max-h-72"
       >
         {isLoading ? (
           <div className="p-3 text-sm text-muted-foreground">
@@ -94,7 +94,7 @@ export function IngredientSuggestions({
                       aria-selected={false}
                       onClick={() => onSelect(name)}
                       className={cn(
-                        'flex cursor-pointer items-center gap-2 px-3 py-1.5 text-sm transition-colors',
+                        'flex cursor-pointer items-center gap-2 px-3 py-3 text-sm transition-colors sm:py-1.5',
                         isSelected
                           ? 'bg-amber-500/10 text-amber-300'
                           : 'text-muted-foreground hover:bg-muted hover:text-foreground'
@@ -119,7 +119,7 @@ export function IngredientSuggestions({
                         onSelect(name)
                       }}
                       className={cn(
-                        'flex cursor-pointer items-center gap-2 px-3 py-1.5 text-sm transition-colors',
+                        'flex cursor-pointer items-center gap-2 px-3 py-3 text-sm transition-colors sm:py-1.5',
                         index === highlightedIndex
                           ? 'bg-muted text-foreground'
                           : 'text-muted-foreground hover:bg-muted hover:text-foreground'

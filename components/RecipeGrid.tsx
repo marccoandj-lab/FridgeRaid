@@ -18,6 +18,8 @@ interface RecipeGridProps {
   onLoadMore?: () => void
 }
 
+const gridCols = 'grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-3 lg:grid-cols-4'
+
 export function RecipeGrid({
   meals,
   isLoading,
@@ -49,11 +51,11 @@ export function RecipeGrid({
 
   if (isLoading && meals.length === 0) {
     return (
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+      <div className={gridCols}>
         {Array.from({ length: 8 }).map((_, i) => (
           <div key={i} className="overflow-hidden rounded-xl bg-card ring-1 ring-foreground/10">
             <Skeleton className="aspect-square w-full rounded-none" />
-            <div className="p-3 space-y-2">
+            <div className="space-y-2 p-3">
               <Skeleton className="h-4 w-3/4" />
               <Skeleton className="h-3 w-1/2" />
             </div>
@@ -80,7 +82,7 @@ export function RecipeGrid({
       <AnimatePresence mode="popLayout">
         <motion.div
           layout
-          className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4"
+          className={gridCols}
         >
           {meals.map((meal, index) => (
             <motion.div

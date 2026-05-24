@@ -18,7 +18,7 @@ export const RecipeCard = memo(function RecipeCard({
 }: RecipeCardProps) {
   return (
     <Link href={`/recipe/${meal.idMeal}`} className="block">
-      <div className="group/card relative overflow-hidden rounded-xl bg-card ring-1 ring-foreground/5 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-500/5 hover:ring-amber-500/20">
+      <div className="group/card relative overflow-hidden rounded-xl bg-card ring-1 ring-foreground/5 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-500/5 hover:ring-amber-500/20 active:scale-[0.97] active:duration-150">
         <div className="relative aspect-square overflow-hidden">
           <Image
             src={meal.strMealThumb}
@@ -44,7 +44,7 @@ export const RecipeCard = memo(function RecipeCard({
             />
           </div>
         </div>
-        <div className="p-3">
+        <div className="p-3 sm:p-3">
           <h3 className="font-heading line-clamp-2 text-sm font-bold text-foreground transition-colors group-hover/card:text-amber-300">
             {meal.strMeal}
           </h3>

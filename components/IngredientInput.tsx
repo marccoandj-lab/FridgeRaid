@@ -118,14 +118,16 @@ export function IngredientInput() {
           onFocus={handleFocus}
           onBlur={handleBlur}
           placeholder={ingredients.length === 0 ? "Search ingredients... (e.g. chicken, garlic)" : "Add more..."}
-          className="min-w-[120px] flex-1 bg-transparent py-1 text-base text-foreground placeholder-muted-foreground outline-none"
+          className="min-w-[120px] flex-1 bg-transparent py-1.5 text-base text-foreground placeholder-muted-foreground outline-none"
+          inputMode="search"
+          autoComplete="off"
         />
         {ingredients.length > 0 && (
           <button
             onClick={() => {
               ingredients.forEach((name) => removeIngredient(name))
             }}
-            className="shrink-0 rounded-md p-1 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            className="shrink-0 rounded-md p-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
             aria-label="Clear all ingredients"
           >
             <X size={14} />

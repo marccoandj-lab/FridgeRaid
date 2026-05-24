@@ -44,7 +44,7 @@ export function PwaInstallPrompt() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 40 }}
-        className="fixed bottom-4 left-4 right-4 z-50 mx-auto max-w-md"
+        className="fixed bottom-20 left-4 right-4 z-50 mx-auto max-w-md sm:bottom-4"
       >
         <div className="flex items-center gap-3 rounded-2xl border border-amber-500/20 bg-card p-4 shadow-xl shadow-amber-500/5 backdrop-blur-xl">
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-500/20">

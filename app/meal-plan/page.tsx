@@ -1,14 +1,11 @@
 'use client'
 
-import { useEffect, useState, useMemo } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useRouter } from 'next/navigation'
-import { motion } from 'framer-motion'
-import Image from 'next/image'
+import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { CalendarDays, ChevronLeft, ChevronRight, Trash2, Sun, Moon, Sunrise, Cookie } from 'lucide-react'
-import { Navbar } from '@/components/Navbar'
 import { useMealPlan, type MealPlanEntry } from '@/hooks/useMealPlan'
-import { Button } from '@/components/ui/button'
 import { useAuth } from '@/lib/AuthProvider'
 import { auth } from '@/lib/firebase'
 
@@ -47,6 +44,7 @@ export default function MealPlanPage() {
   const [newRecipe, setNewRecipe] = useState<{ date: string; mealType: MealPlanEntry["mealType"] } | null>(null)
   const [recipeName, setRecipeName] = useState("")
   const [recipeId, setRecipeId] = useState("")
+  const scrollRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (!authLoading && !user && !auth.currentUser) router.replace('/auth')
@@ -76,47 +74,49 @@ export default function MealPlanPage() {
   }
 
   return (
-    <>
-      <Navbar />
-      <main className="mx-auto max-w-6xl px-4 pb-16 pt-8">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8 flex items-center justify-between">
-          <div>
-            <h1 className="font-heading text-3xl font-bold text-foreground sm:text-4xl">Meal Plan</h1>
-            <p className="mt-1 text-sm text-muted-foreground">Plan your week ahead</p>
-          </div>
-          <div className="flex items-center gap-2">
-            <button onClick={() => { const d = new Date(weekStart); d.setDate(d.getDate() - 7); setWeekStart(d) }} className="flex h-8 w-8 items-center justify-center rounded-lg bg-card text-muted-foreground ring-1 ring-foreground/10 hover:text-foreground">
-              <ChevronLeft size={16} />
-            </button>
-            <button onClick={() => setWeekStart(getMonday(new Date()))} className="rounded-lg bg-card px-3 py-1.5 text-xs text-muted-foreground ring-1 ring-foreground/10 hover:text-foreground">Today</button>
-            <button onClick={() => { const d = new Date(weekStart); d.setDate(d.getDate() + 7); setWeekStart(d) }} className="flex h-8 w-8 items-center justify-center rounded-lg bg-card text-muted-foreground ring-1 ring-foreground/10 hover:text-foreground">
-              <ChevronRight size={16} />
-            </button>
-          </div>
+    <main className="mx-auto max-w-6xl px-4 pb-24 pt-4 sm:pb-16 sm:pt-8">
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-6 flex items-center justify-between sm:mb-8">
+        <div>
+          <h1 className="font-heading text-2xl font-bold text-foreground sm:text-4xl">Meal Plan</h1>
+          <p className="mt-1 text-sm text-muted-foreground">Plan your week ahead</p>
+        </div>
+        <div className="flex items-center gap-2">
+          <button onClick={() => { const d = new Date(weekStart); d.setDate(d.getDate() - 7); setWeekStart(d) }} className="flex h-8 w-8 items-center justify-center rounded-lg bg-card text-muted-foreground ring-1 ring-foreground/10 hover:text-foreground active:scale-[0.92]">
+            <ChevronLeft size={16} />
+          </button>
+          <button onClick={() => setWeekStart(getMonday(new Date()))} className="rounded-lg bg-card px-3 py-1.5 text-xs text-muted-foreground ring-1 ring-foreground/10 hover:text-foreground active:scale-[0.96]">Today</button>
+          <button onClick={() => { const d = new Date(weekStart); d.setDate(d.getDate() + 7); setWeekStart(d) }} className="flex h-8 w-8 items-center justify-center rounded-lg bg-card text-muted-foreground ring-1 ring-foreground/10 hover:text-foreground active:scale-[0.92]">
+            <ChevronRight size={16} />
+          </button>
+        </div>
+      </motion.div>
+
+      {plan.length === 0 && !newRecipe && (
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-amber-500/20 bg-card/50 py-20 text-center">
+          <CalendarDays size={48} className="mb-4 text-amber-500/30" />
+          <p className="font-heading text-lg font-bold text-foreground">No meals planned</p>
+          <p className="mt-1 text-sm text-muted-foreground">Tap a meal slot to add a recipe</p>
         </motion.div>
+      )}
 
-        {plan.length === 0 && !newRecipe && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-amber-500/20 bg-card/50 py-20 text-center">
-            <CalendarDays size={48} className="mb-4 text-amber-500/30" />
-            <p className="font-heading text-lg font-bold text-foreground">No meals planned</p>
-            <p className="mt-1 text-sm text-muted-foreground">Click a meal slot to add a recipe</p>
-          </motion.div>
-        )}
-
-        <div className="grid grid-cols-7 gap-2">
+      {/* Scrollable week view on mobile */}
+      <div ref={scrollRef} className="-mx-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:overflow-visible sm:px-0">
+        <div className="grid grid-cols-7 gap-1.5 sm:gap-2" style={{ minWidth: '560px' }}>
           {weekDates.map((date, di) => (
             <div key={date}>
-              <div className={`mb-2 text-center text-xs font-medium ${date === today ? 'text-amber-400' : 'text-muted-foreground'}`}>
+              <div className={`mb-1.5 truncate text-center text-[10px] font-medium sm:text-xs ${
+                date === today ? 'text-amber-400' : 'text-muted-foreground'
+              }`}>
                 {dayNames[di]}
               </div>
-              <div className="space-y-1.5">
+              <div className="space-y-1 sm:space-y-1.5">
                 {MEAL_TYPES.map((mealType) => {
                   const entry = plan.find((p) => p.date === date && p.mealType === mealType)
                   return (
                     <div
                       key={mealType}
                       onClick={() => setNewRecipe({ date, mealType })}
-                      className={`min-h-[60px] cursor-pointer rounded-lg p-1.5 text-left text-[10px] transition-all ${
+                      className={`min-h-[52px] cursor-pointer rounded-lg p-1.5 text-left text-[10px] transition-all active:scale-[0.97] sm:min-h-[60px] ${
                         entry ? 'bg-amber-500/10 ring-1 ring-amber-500/20' : 'bg-card ring-1 ring-foreground/5 hover:ring-amber-500/20'
                       }`}
                     >
@@ -129,13 +129,13 @@ export default function MealPlanPage() {
                           </div>
                           <button
                             onClick={(e) => { e.stopPropagation(); removeFromPlan(date, mealType) }}
-                            className="shrink-0 text-muted-foreground hover:text-red-400"
+                            className="shrink-0 p-0.5 text-muted-foreground hover:text-red-400"
                           >
                             <Trash2 size={9} />
                           </button>
                         </div>
                       ) : (
-                        <span className="flex items-center gap-1 text-[9px] text-muted-foreground/50">
+                        <span className="flex items-center gap-1 text-[8px] text-muted-foreground/50 sm:text-[9px]">
                           {MEAL_ICONS[mealType]}
                           {mealType}
                         </span>
@@ -147,13 +147,16 @@ export default function MealPlanPage() {
             </div>
           ))}
         </div>
+      </div>
 
-        {/* Add recipe modal */}
+      {/* Add recipe modal */}
+      <AnimatePresence>
         {newRecipe && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4" onClick={() => setNewRecipe(null)}>
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
               className="w-full max-w-sm rounded-2xl border border-amber-500/20 bg-card p-5 shadow-xl"
               onClick={(e) => e.stopPropagation()}
             >
@@ -176,14 +179,14 @@ export default function MealPlanPage() {
                   className="w-full rounded-xl border border-foreground/10 bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-amber-500/40 focus:outline-none"
                 />
                 <div className="flex gap-2">
-                  <button onClick={() => setNewRecipe(null)} className="flex-1 rounded-xl border border-foreground/10 px-4 py-2.5 text-sm text-muted-foreground transition-colors hover:text-foreground">Cancel</button>
-                  <button onClick={addRecipe} className="flex-1 rounded-xl bg-amber-500 px-4 py-2.5 text-sm font-semibold text-black transition-all hover:bg-amber-400">Add</button>
+                  <button onClick={() => setNewRecipe(null)} className="flex-1 rounded-xl border border-foreground/10 px-4 py-2.5 text-sm text-muted-foreground transition-colors hover:text-foreground active:scale-[0.98]">Cancel</button>
+                  <button onClick={addRecipe} className="flex-1 rounded-xl bg-amber-500 px-4 py-2.5 text-sm font-semibold text-black transition-all hover:bg-amber-400 active:scale-[0.98]">Add</button>
                 </div>
               </div>
             </motion.div>
           </div>
         )}
-      </main>
-    </>
+      </AnimatePresence>
+    </main>
   )
 }
