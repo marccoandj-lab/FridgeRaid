@@ -49,7 +49,7 @@ async function cacheFirst(request) {
   if (cached) return cached
   try {
     const res = await fetch(request)
-    if (res.ok) {
+    if (res.ok && request.method === 'GET') {
       const cache = await caches.open(CACHE)
       cache.put(request, res.clone())
     }
@@ -62,7 +62,7 @@ async function cacheFirst(request) {
 async function networkFirst(request) {
   try {
     const res = await fetch(request)
-    if (res.ok) {
+    if (res.ok && request.method === 'GET') {
       const cache = await caches.open(CACHE)
       cache.put(request, res.clone())
     }
