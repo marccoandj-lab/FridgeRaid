@@ -13,12 +13,16 @@ export async function GET(
   const url = `${MEALDB_BASE}/${path}${queryString}`
   const isRandom = path.includes('random')
 
-  const res = await fetch(url, isRandom ? { cache: 'no-store' } : { next: { revalidate: 86400 } })
+  const fetchOpts: RequestInit & { next?: { revalidate: number } } = isRandom
+    ? { cache: 'no-store' }
+    : { next: { revalidate: 86400 } }
+  const res = await fetch(url, fetchOpts)
   const data = await res.json()
 
-  return NextResponse.json(data, {
-    headers: {
-      'Cache-Control': 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800',
-    },
-  })
+  const headers: Record<string, string> = {}
+  if (!isRandom) {
+    headers['Cache-Control'] = 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800'
+  }
+
+  return NextResponse.json(data, { headers })
 }
