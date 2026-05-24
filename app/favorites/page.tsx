@@ -2,6 +2,7 @@
 
 import { useMemo } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import { Navbar } from '@/components/Navbar'
 import { RecipeCard } from '@/components/RecipeCard'
 import { EmptyState } from '@/components/EmptyState'
 import { useFavorites } from '@/hooks/useFavorites'
@@ -15,7 +16,9 @@ export default function FavoritesPage() {
   )
 
   return (
-    <main className="mx-auto max-w-7xl px-4 pb-16 pt-8">
+    <>
+      <Navbar />
+      <main className="mx-auto max-w-7xl px-4 pb-16 pt-8">
       <h1 className="mb-6 font-heading text-2xl font-bold text-foreground sm:mb-8 sm:text-4xl">
         Saved Recipes
       </h1>
@@ -58,5 +61,6 @@ export default function FavoritesPage() {
         </AnimatePresence>
       )}
     </main>
+    </>
   )
 }

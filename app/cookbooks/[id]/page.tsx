@@ -5,6 +5,7 @@ import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowLeft, Plus, Copy, Check } from 'lucide-react'
+import { Navbar } from '@/components/Navbar'
 import { CookbookRecipeCard } from '@/components/CookbookRecipeCard'
 import { CookbookMemberBadge } from '@/components/CookbookMemberBadge'
 import { EmptyState } from '@/components/EmptyState'
@@ -62,7 +63,9 @@ export default function CookbookDetailPage() {
   if (authLoading || !user) return null
 
   return (
-    <main className="mx-auto max-w-7xl px-4 pb-24 pt-8">
+    <>
+      <Navbar />
+      <main className="mx-auto max-w-7xl px-4 pb-24 pt-8">
       <Link
         href="/cookbooks"
         className="mb-4 flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground sm:mb-6"
@@ -183,5 +186,6 @@ export default function CookbookDetailPage() {
         <Plus size={24} />
       </Link>
     </main>
+    </>
   )
 }

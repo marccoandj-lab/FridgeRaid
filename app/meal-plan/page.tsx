@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { CalendarDays, ChevronLeft, ChevronRight, Trash2, Sun, Moon, Sunrise, Cookie } from 'lucide-react'
+import { Navbar } from '@/components/Navbar'
 import { useMealPlan, type MealPlanEntry } from '@/hooks/useMealPlan'
 import { useAuth } from '@/lib/AuthProvider'
 import { auth } from '@/lib/firebase'
@@ -74,7 +75,9 @@ export default function MealPlanPage() {
   }
 
   return (
-    <main className="mx-auto max-w-6xl px-4 pb-16 pt-8">
+    <>
+      <Navbar />
+      <main className="mx-auto max-w-6xl px-4 pb-16 pt-8">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-6 flex items-center justify-between sm:mb-8">
         <div>
           <h1 className="font-heading text-2xl font-bold text-foreground sm:text-4xl">Meal Plan</h1>
@@ -188,5 +191,6 @@ export default function MealPlanPage() {
         )}
       </AnimatePresence>
     </main>
+    </>
   )
 }

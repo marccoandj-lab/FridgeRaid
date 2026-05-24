@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowLeft, Search, Plus, Loader2 } from 'lucide-react'
 import Image from 'next/image'
+import { Navbar } from '@/components/Navbar'
 import { useCookbookRecipes } from '@/hooks/useCookbookRecipes'
 import { useAuth } from '@/lib/AuthProvider'
 import { auth } from '@/lib/firebase'
@@ -110,7 +111,9 @@ export default function AddRecipePage() {
   if (authLoading || !user) return null
 
   return (
-    <main className="mx-auto max-w-2xl px-4 pb-24 pt-8">
+    <>
+      <Navbar />
+      <main className="mx-auto max-w-2xl px-4 pb-24 pt-8">
       <Link
         href={`/cookbooks/${id}`}
         className="mb-4 flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground sm:mb-6"
@@ -282,5 +285,6 @@ export default function AddRecipePage() {
         </form>
       )}
     </main>
+    </>
   )
 }

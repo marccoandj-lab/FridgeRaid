@@ -5,6 +5,7 @@ import { useParams, useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { ArrowLeft, Check, ExternalLink, Film, ChefHat, UtensilsCrossed, Minus, Plus, CookingPot, Maximize2, Minimize2, ChevronLeft, ChevronRight, Star, CalendarDays } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Navbar } from '@/components/Navbar'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -136,7 +137,9 @@ export default function RecipeDetailPage() {
 
   if (isLoading) {
     return (
-      <main className="mx-auto max-w-7xl px-4 pb-24 pt-4 sm:px-4 sm:pb-16 sm:pt-8">
+      <>
+        <Navbar />
+        <main className="mx-auto max-w-7xl px-4 pb-24 pt-4 sm:px-4 sm:pb-16 sm:pt-8">
         <Skeleton className="mb-6 h-8 w-24" />
         <Skeleton className="mb-8 aspect-[2/1] w-full rounded-2xl sm:aspect-[3/1]" />
         <div className="space-y-4">
@@ -144,14 +147,18 @@ export default function RecipeDetailPage() {
           <Skeleton className="h-6 w-1/4" />
         </div>
       </main>
-    )
+    </>
+  )
   }
 
   if (error || !meal) {
     return (
-      <main className="mx-auto max-w-7xl px-4 pb-24 pt-4 sm:pb-16 sm:pt-8">
-        <EmptyState type="error" />
-      </main>
+      <>
+        <Navbar />
+        <main className="mx-auto max-w-7xl px-4 pb-24 pt-4 sm:pb-16 sm:pt-8">
+          <EmptyState type="error" />
+        </main>
+      </>
     )
   }
 
@@ -241,17 +248,19 @@ export default function RecipeDetailPage() {
   }
 
   return (
-    <main className="mx-auto max-w-4xl px-4 pb-16">
-      <motion.div
-        initial={{ opacity: 0, x: -10 }}
-        animate={{ opacity: 1, x: 0 }}
-        className="pb-4"
-      >
-        <Button variant="ghost" onClick={() => router.back()} className="gap-2 text-muted-foreground">
-          <ArrowLeft size={16} />
-          Back
-        </Button>
-      </motion.div>
+    <>
+      <Navbar />
+      <main className="mx-auto max-w-4xl px-4 pb-16">
+        <motion.div
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="pb-4"
+        >
+          <Button variant="ghost" onClick={() => router.back()} className="gap-2 text-muted-foreground">
+            <ArrowLeft size={16} />
+            Back
+          </Button>
+        </motion.div>
 
       {/* Hero */}
       <motion.div
@@ -525,5 +534,6 @@ export default function RecipeDetailPage() {
         </motion.div>
       )}
     </main>
+    </>
   )
 }

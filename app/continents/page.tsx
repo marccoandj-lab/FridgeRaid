@@ -4,6 +4,7 @@ import { useState, useCallback } from 'react'
 import dynamic from 'next/dynamic'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, Globe } from 'lucide-react'
+import { Navbar } from '@/components/Navbar'
 import { RecipeCard } from '@/components/RecipeCard'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -71,7 +72,9 @@ export default function ContinentsPage() {
   }, [])
 
   return (
-    <main className="relative flex min-h-[calc(100dvh-56px)] flex-col pb-0">
+    <>
+      <Navbar />
+      <main className="relative flex min-h-[calc(100dvh-56px)] flex-col pb-0">
       <AnimatePresence mode="wait">
         {selected ? (
           <motion.div
@@ -207,5 +210,6 @@ export default function ContinentsPage() {
         )}
       </AnimatePresence>
     </main>
+    </>
   )
 }

@@ -9,6 +9,7 @@ import { Sparkles, Compass, Bookmark, X, AlertTriangle, Sun } from 'lucide-react
 import { IngredientInput } from '@/components/IngredientInput'
 import { RecipeGrid } from '@/components/RecipeGrid'
 import { SurpriseMeButton } from '@/components/SurpriseMeButton'
+import { Navbar } from '@/components/Navbar'
 import { useIngredients } from '@/hooks/useIngredients'
 import { useMealSearch } from '@/hooks/useMealSearch'
 import { useDailyMeals } from '@/hooks/useDailyMeals'
@@ -39,7 +40,9 @@ export default function HomePage() {
   if (authLoading || !user) return null
 
   return (
-    <main className="relative mx-auto max-w-7xl px-4 pb-16 pt-6">
+    <>
+      <Navbar />
+      <main className="relative mx-auto max-w-7xl px-4 pb-16 pt-6">
       {/* Header */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
@@ -313,6 +316,7 @@ export default function HomePage() {
       <footer className="mt-8 text-center text-xs text-muted-foreground/50 sm:mt-12">
         Powered by TheMealDB
       </footer>
-    </main>
+      </main>
+    </>
   )
 }

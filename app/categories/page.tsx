@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, LayoutList, Beef, Drumstick, CakeSlice, ChefHat, Pizza, Fish, Apple, Egg, Milk, Coffee, Sprout, Vegan } from 'lucide-react'
+import { Navbar } from '@/components/Navbar'
 import { RecipeCard } from '@/components/RecipeCard'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -55,7 +56,9 @@ export default function CategoriesPage() {
   }, [])
 
   return (
-    <main className="relative mx-auto max-w-7xl px-4 pb-16 pt-6">
+    <>
+      <Navbar />
+      <main className="relative mx-auto max-w-7xl px-4 pb-16 pt-6">
       <AnimatePresence mode="wait">
         {selected ? (
           <motion.div
@@ -166,5 +169,6 @@ export default function CategoriesPage() {
         )}
       </AnimatePresence>
     </main>
+    </>
   )
 }

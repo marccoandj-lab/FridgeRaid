@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { ShoppingCart, Plus, Trash2, CheckCheck, X } from 'lucide-react'
+import { Navbar } from '@/components/Navbar'
 import { useShoppingList } from '@/hooks/useShoppingList'
 import { useAuth } from '@/lib/AuthProvider'
 import { auth } from '@/lib/firebase'
@@ -31,7 +32,9 @@ export default function ShoppingListPage() {
   }
 
   return (
-    <main className="mx-auto max-w-3xl px-4 pb-16 pt-8">
+    <>
+      <Navbar />
+      <main className="mx-auto max-w-3xl px-4 pb-16 pt-8">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-6 flex items-center justify-between sm:mb-8">
         <div>
           <h1 className="font-heading text-2xl font-bold text-foreground sm:text-4xl">Shopping List</h1>
@@ -117,5 +120,6 @@ export default function ShoppingListPage() {
         </div>
       )}
     </main>
+    </>
   )
 }

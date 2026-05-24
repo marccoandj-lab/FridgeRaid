@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import { User, Mail, LogOut, ChefHat, Calendar, IceCream, Flame, Sun, UtensilsCrossed } from 'lucide-react'
 import { useAuth } from '@/lib/AuthProvider'
 import { auth } from '@/lib/firebase'
+import { Navbar } from '@/components/Navbar'
 import { useFavorites } from '@/hooks/useFavorites'
 import { useCookingStreaks } from '@/hooks/useCookingStreaks'
 import { useDietaryPreferences, DIET_OPTIONS } from '@/hooks/useDietaryPreferences'
@@ -30,7 +31,9 @@ export default function ProfilePage() {
     : null
 
   return (
-    <main className="mx-auto max-w-2xl px-4 pb-16 pt-8">
+    <>
+      <Navbar />
+      <main className="mx-auto max-w-2xl px-4 pb-16 pt-8">
       {/* Profile header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -127,5 +130,6 @@ export default function ProfilePage() {
         </button>
       </motion.div>
     </main>
+    </>
   )
 }
