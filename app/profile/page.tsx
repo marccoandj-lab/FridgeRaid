@@ -30,7 +30,7 @@ export default function ProfilePage() {
     : null
 
   return (
-    <main className="mx-auto max-w-2xl px-4 pb-24 pt-4 sm:pb-16 sm:pt-8">
+    <main className="mx-auto max-w-2xl px-4 pb-16 pt-8">
       {/* Profile header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}

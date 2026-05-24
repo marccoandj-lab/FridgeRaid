@@ -80,7 +80,7 @@ export default function ContinentsPage() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -40 }}
             transition={{ duration: 0.35, ease: 'easeOut' }}
-            className="relative z-10 flex-1 overflow-y-auto px-4 pb-24 pt-4 sm:pb-8 sm:pt-6"
+            className="relative z-10 flex-1 overflow-y-auto px-4 pb-8 pt-6"
           >
             <Button
               variant="ghost"

@@ -39,7 +39,7 @@ export default function HomePage() {
   if (authLoading || !user) return null
 
   return (
-    <main className="relative mx-auto max-w-7xl px-4 pb-6 pt-4 sm:pb-16 sm:pt-6">
+    <main className="relative mx-auto max-w-7xl px-4 pb-16 pt-6">
       {/* Header */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}

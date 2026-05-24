@@ -241,7 +241,7 @@ export default function RecipeDetailPage() {
   }
 
   return (
-    <main className="mx-auto max-w-4xl px-4 pb-24 pt-4 sm:pb-16">
+    <main className="mx-auto max-w-4xl px-4 pb-16">
       <motion.div
         initial={{ opacity: 0, x: -10 }}
         animate={{ opacity: 1, x: 0 }}

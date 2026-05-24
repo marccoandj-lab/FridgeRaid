@@ -48,7 +48,7 @@ export default function RootLayout({
       lang="en"
       className={`${playfair.variable} ${dmSans.variable} h-full antialiased dark`}
     >
-      <body className="min-h-full flex flex-col pb-[calc(3.5rem+env(safe-area-inset-bottom,0px))] sm:pb-0">
+      <body className="min-h-full flex flex-col">
         <AuthProvider>
           <IngredientsProvider>
             {children}

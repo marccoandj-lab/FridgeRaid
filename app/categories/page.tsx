@@ -55,7 +55,7 @@ export default function CategoriesPage() {
   }, [])
 
   return (
-    <main className="relative mx-auto max-w-7xl px-4 pb-24 pt-4 sm:pb-16 sm:pt-6">
+    <main className="relative mx-auto max-w-7xl px-4 pb-16 pt-6">
       <AnimatePresence mode="wait">
         {selected ? (
           <motion.div

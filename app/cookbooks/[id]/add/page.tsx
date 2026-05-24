@@ -110,7 +110,7 @@ export default function AddRecipePage() {
   if (authLoading || !user) return null
 
   return (
-    <main className="mx-auto max-w-2xl px-4 pb-24 pt-4 sm:pb-24 sm:pt-8">
+    <main className="mx-auto max-w-2xl px-4 pb-24 pt-8">
       <Link
         href={`/cookbooks/${id}`}
         className="mb-4 flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground sm:mb-6"

@@ -15,7 +15,7 @@ export default function FavoritesPage() {
   )
 
   return (
-    <main className="mx-auto max-w-7xl px-4 pb-24 pt-4 sm:pb-16 sm:pt-8">
+    <main className="mx-auto max-w-7xl px-4 pb-16 pt-8">
       <h1 className="mb-6 font-heading text-2xl font-bold text-foreground sm:mb-8 sm:text-4xl">
         Saved Recipes
       </h1>
