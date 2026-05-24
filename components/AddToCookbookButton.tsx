@@ -1,8 +1,8 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { BookOpen, Check, Loader2, BookPlus } from 'lucide-react'
-import { addDoc, collection } from 'firebase/firestore'
+import { BookOpen, Check, Loader2, BookPlus, Ban } from 'lucide-react'
+import { doc, setDoc, collection, query, where, getDocs } from 'firebase/firestore'
 import { motion, AnimatePresence } from 'framer-motion'
 import { db } from '@/lib/firebase'
 import { useAuth } from '@/lib/AuthProvider'
@@ -29,6 +29,8 @@ export function AddToCookbookButton({
   const [open, setOpen] = useState(false)
   const [adding, setAdding] = useState<string | null>(null)
   const [added, setAdded] = useState<string | null>(null)
+  const [existingIds, setExistingIds] = useState<Set<string>>(new Set())
+  const [checkingExisting, setCheckingExisting] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -42,21 +44,44 @@ export function AddToCookbookButton({
     return () => document.removeEventListener('mousedown', handler)
   }, [open])
 
+  // Query which cookbooks already have this recipe when dropdown opens
+  useEffect(() => {
+    if (!open) return
+    const fetchExisting = async () => {
+      setCheckingExisting(true)
+      try {
+        const q = query(collection(db, 'cookbookRecipes'), where('idMeal', '==', mealId))
+        const snapshot = await getDocs(q)
+        setExistingIds(new Set(snapshot.docs.map((d) => d.data().cookbookId)))
+      } catch (e) {
+        console.error('Failed to check existing recipes:', e)
+      } finally {
+        setCheckingExisting(false)
+      }
+    }
+    fetchExisting()
+  }, [open, mealId])
+
+  const getCompositeId = (cookbookId: string) => `${cookbookId}_meal_${mealId}`
+
   const handleAdd = async (cookbookId: string) => {
     if (!user) return
     setAdding(cookbookId)
     try {
-      await addDoc(collection(db, 'cookbookRecipes'), {
+      const ref = doc(db, 'cookbookRecipes', getCompositeId(cookbookId))
+      const data = {
         cookbookId,
         addedBy: user.uid,
-        type: 'meal',
+        type: 'meal' as const,
         idMeal: mealId,
         strMeal: mealName,
         strMealThumb: mealThumb,
         likes: [],
         addedAt: Date.now(),
-      })
+      }
+      await setDoc(ref, data)
       setAdded(cookbookId)
+      setExistingIds((prev) => new Set(prev).add(cookbookId))
       setTimeout(() => { setAdded(null); setOpen(false) }, 1200)
     } catch (e) {
       console.error('Failed to add recipe:', e)
@@ -100,7 +125,7 @@ export function AddToCookbookButton({
             </div>
 
             <div className="max-h-48 overflow-y-auto p-1">
-              {isLoading ? (
+              {isLoading || checkingExisting ? (
                 <div className="flex items-center justify-center py-4">
                   <Loader2 size={16} className="animate-spin text-amber-500" />
                 </div>
@@ -110,17 +135,30 @@ export function AddToCookbookButton({
                 </p>
               ) : (
                 cookbooks.map((cb) => {
+                  const isExisting = existingIds.has(cb.id)
                   const isAdding = adding === cb.id
                   const isAdded = added === cb.id
                   return (
                     <button
                       key={cb.id}
                       onClick={() => handleAdd(cb.id)}
-                      disabled={isAdding || isAdded}
+                      disabled={isExisting || isAdding || isAdded}
                       className="flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-left text-sm text-foreground transition-colors hover:bg-amber-500/10 disabled:opacity-50"
                     >
-                      <BookOpen size={14} className="shrink-0 text-amber-500" />
+                      <BookOpen
+                        size={14}
+                        className={cn(
+                          'shrink-0',
+                          isExisting ? 'text-muted-foreground' : 'text-amber-500',
+                        )}
+                      />
                       <span className="flex-1 truncate">{cb.name}</span>
+                      {isExisting && (
+                        <span className="flex items-center gap-1 text-[10px] text-muted-foreground">
+                          <Ban size={10} />
+                          Already added
+                        </span>
+                      )}
                       {isAdded && <Check size={14} className="shrink-0 text-emerald-400" />}
                       {isAdding && <Loader2 size={14} className="shrink-0 animate-spin text-amber-500" />}
                     </button>

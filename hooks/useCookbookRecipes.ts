@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
-import { collection, query, where, orderBy, addDoc, deleteDoc, doc, updateDoc, arrayUnion, arrayRemove, onSnapshot, getDoc, runTransaction } from "firebase/firestore";
+import { collection, query, where, orderBy, setDoc, deleteDoc, doc, arrayUnion, arrayRemove, onSnapshot, getDoc, runTransaction } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { useAuth } from "@/lib/AuthProvider";
 import type { CookbookRecipe } from "@/types/cookbook";
@@ -43,13 +43,19 @@ export function useCookbookRecipes(cookbookId: string) {
     return () => { active = false; unsub(); };
   }, [cookbookId]);
 
+  const getCompositeId = (input: AddRecipeInput) =>
+    input.type === "meal" ? `${cookbookId}_meal_${input.idMeal}` : `${cookbookId}_custom_${input.name}`;
+
   const addRecipe = useCallback(async (input: AddRecipeInput) => {
     if (!user) return;
+    const ref = doc(db, "cookbookRecipes", getCompositeId(input));
+    const snap = await getDoc(ref);
+    if (snap.exists()) return;
     const base = { cookbookId, addedBy: user.uid, likes: [], addedAt: Date.now() };
     const data = input.type === "meal"
       ? { ...base, type: "meal", idMeal: input.idMeal, strMeal: input.strMeal, strMealThumb: input.strMealThumb }
       : { ...base, type: "custom", name: input.name, ingredients: input.ingredients, instructions: input.instructions, imageUrl: input.imageUrl || undefined };
-    await addDoc(collection(db, "cookbookRecipes"), data);
+    await setDoc(ref, data);
   }, [cookbookId, user]);
 
   const removeRecipe = useCallback(async (recipeId: string) => {

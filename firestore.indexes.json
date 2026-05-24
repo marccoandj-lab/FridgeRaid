@@ -7,6 +7,13 @@
         { "fieldPath": "cookbookId", "order": "ASCENDING" },
         { "fieldPath": "addedAt", "order": "DESCENDING" }
       ]
+    },
+    {
+      "collectionGroup": "cookbookRecipes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "idMeal", "order": "ASCENDING" }
+      ]
     }
   ],
   "fieldOverrides": []
