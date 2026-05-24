@@ -117,7 +117,7 @@ export function IngredientInput() {
           onKeyDown={handleKeyDown}
           onFocus={handleFocus}
           onBlur={handleBlur}
-          placeholder={ingredients.length === 0 ? "Search ingredients... (e.g. chicken, garlic)" : "Add more..."}
+          placeholder={ingredients.length === 0 ? "Pretraži sastojke... (npr. piletina, beli luk)" : "Dodaj još..."}
           className="min-w-[120px] flex-1 bg-transparent py-1.5 text-base text-foreground placeholder-muted-foreground outline-none"
           inputMode="search"
           autoComplete="off"
@@ -128,7 +128,7 @@ export function IngredientInput() {
               ingredients.forEach((name) => removeIngredient(name))
             }}
             className="shrink-0 rounded-md p-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-            aria-label="Clear all ingredients"
+            aria-label="Obriši sve sastojke"
           >
             <X size={14} />
           </button>
@@ -145,7 +145,7 @@ export function IngredientInput() {
       />
       {ingredients.length > 0 && (
         <p className="mt-1.5 text-xs text-muted-foreground">
-          {ingredients.length} ingredient{ingredients.length !== 1 ? 's' : ''} selected
+          {ingredients.length} {ingredients.length !== 1 ? 'sastojaka izabrano' : 'sastojak izabran'}
         </p>
       )}
     </div>

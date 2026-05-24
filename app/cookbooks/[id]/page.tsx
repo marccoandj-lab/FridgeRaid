@@ -71,7 +71,7 @@ export default function CookbookDetailPage() {
         className="mb-4 flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground sm:mb-6"
       >
         <ArrowLeft size={16} />
-        Back to Cookbooks
+        Nazad na kuvarice
       </Link>
 
       <motion.div
@@ -95,7 +95,7 @@ export default function CookbookDetailPage() {
                 className="flex items-center gap-1.5 rounded-full border border-amber-500/20 bg-amber-500/5 px-3 py-1 text-xs text-amber-400 transition-all hover:bg-amber-500/10 active:scale-[0.96]"
               >
                 {copied ? <Check size={12} /> : <Copy size={12} />}
-                {copied ? 'Copied!' : `Invite: ${cookbook.inviteCode}`}
+                {copied ? 'Kopirano!' : `Kod: ${cookbook.inviteCode}`}
               </button>
             </div>
           </>
@@ -120,7 +120,7 @@ export default function CookbookDetailPage() {
                 : 'bg-card text-muted-foreground ring-1 ring-foreground/5 hover:text-foreground'
             }`}
           >
-            {f === 'all' ? 'All' : f === 'meal' ? 'MealDB' : 'Custom'}
+            {f === 'all' ? 'Sve' : f === 'meal' ? 'MealDB' : 'Prilagođeno'}
           </button>
         ))}
       </motion.div>
@@ -139,10 +139,10 @@ export default function CookbookDetailPage() {
           type="no-results"
           message={
             filter === 'all'
-              ? 'No recipes in this cookbook yet'
-              : `No ${filter === 'meal' ? 'MealDB' : 'Custom'} recipes in this cookbook`
+              ? 'Još uvek nema recepata u ovoj kuvarici'
+              : `Nema ${filter === 'meal' ? 'MealDB' : 'prilagođenih'} recepata u ovoj kuvarici`
           }
-          action={{ label: 'Add recipe', href: `/cookbooks/${id}/add` }}
+          action={{ label: 'Dodaj recept', href: `/cookbooks/${id}/add` }}
         />
       ) : (
         <AnimatePresence mode="popLayout">

@@ -27,8 +27,8 @@ export default function CookbooksPage() {
       <Navbar />
       <main className="mx-auto max-w-5xl px-4 pb-16 pt-8">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-6 sm:mb-8">
-        <h1 className="font-heading text-2xl font-bold text-foreground sm:text-4xl">Cookbooks</h1>
-        <p className="mt-1 text-sm text-muted-foreground">Create, share, and collaborate on recipe collections</p>
+        <h1 className="font-heading text-2xl font-bold text-foreground sm:text-4xl">Kuvarice</h1>
+        <p className="mt-1 text-sm text-muted-foreground">Pravite, delite i sarađujte na kolekcijama recepata</p>
       </motion.div>
       <div className="flex flex-col gap-6 lg:flex-row lg:gap-6">
         <div className="flex-1">
@@ -37,8 +37,8 @@ export default function CookbooksPage() {
           ) : cookbooks.length === 0 ? (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex flex-col items-center justify-center rounded-xl border border-dashed border-amber-500/20 bg-card/50 py-16 text-center">
               <BookOpen size={40} className="mb-3 text-amber-500/40" />
-              <p className="font-heading text-lg font-bold text-foreground">No cookbooks yet</p>
-              <p className="mt-1 text-sm text-muted-foreground">Create one or join with an invite code</p>
+              <p className="font-heading text-lg font-bold text-foreground">Još uvek nema kuvarica</p>
+              <p className="mt-1 text-sm text-muted-foreground">Napravite novu ili se pridružite putem koda</p>
             </motion.div>
           ) : (
             <div className="space-y-3">{cookbooks.map((book, i) => <CookbookCard key={book.id} cookbook={book} isOwner={book.ownerId === user.uid} onDelete={deleteCookbook} index={i} />)}</div>

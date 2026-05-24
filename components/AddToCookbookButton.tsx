@@ -121,7 +121,7 @@ export function AddToCookbookButton({
             className="absolute right-0 top-full mt-2 z-50 w-52 overflow-hidden rounded-xl border border-amber-500/10 bg-card shadow-2xl shadow-amber-500/5"
           >
             <div className="border-b border-amber-500/10 px-3 py-2">
-              <p className="text-xs font-medium text-muted-foreground">Add to cookbook</p>
+              <p className="text-xs font-medium text-muted-foreground">Dodaj u kuvaricu</p>
             </div>
 
             <div className="max-h-48 overflow-y-auto p-1">
@@ -131,7 +131,7 @@ export function AddToCookbookButton({
                 </div>
               ) : cookbooks.length === 0 ? (
                 <p className="px-3 py-4 text-center text-xs text-muted-foreground">
-                  No cookbooks yet — create one first
+                  Još nema kuvarica — prvo napravite jednu
                 </p>
               ) : (
                 cookbooks.map((cb) => {
@@ -156,7 +156,7 @@ export function AddToCookbookButton({
                       {isExisting && (
                         <span className="flex items-center gap-1 text-[10px] text-muted-foreground">
                           <Ban size={10} />
-                          Already added
+                          Već dodato
                         </span>
                       )}
                       {isAdded && <Check size={14} className="shrink-0 text-emerald-400" />}

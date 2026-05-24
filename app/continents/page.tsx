@@ -91,7 +91,7 @@ export default function ContinentsPage() {
               className="mb-4 gap-2 text-muted-foreground hover:text-foreground"
             >
               <ChevronLeft size={16} />
-              Back to map
+              Nazad na mapu
             </Button>
 
             <div className="mb-6">
@@ -99,7 +99,7 @@ export default function ContinentsPage() {
                 {selectedContinent}
               </h1>
               <p className="mt-1 text-sm text-muted-foreground">
-                {isLoading ? 'Gathering recipes...' : `${meals.length} recipes to explore`}
+                {isLoading ? 'Prikupljanje recepata...' : `${meals.length} recepata za istraživanje`}
               </p>
             </div>
 
@@ -137,7 +137,7 @@ export default function ContinentsPage() {
               </motion.div>
             ) : (
               <p className="py-16 text-center text-sm text-muted-foreground">
-                No recipes found for this continent.
+                Nema recepata za ovaj kontinent.
               </p>
             )}
           </motion.div>
@@ -186,7 +186,7 @@ export default function ContinentsPage() {
                           {continent}
                         </h3>
                         <p className="mt-0.5 text-xs text-muted-foreground">
-                          {areaCount} cuisines
+                           {areaCount} kuhinja
                         </p>
                         <div
                           className="mt-2 h-1 w-8 rounded-full transition-all duration-300 group-hover:w-full"
@@ -203,7 +203,7 @@ export default function ContinentsPage() {
             <div className="absolute bottom-4 left-1/2 z-20 hidden -translate-x-1/2 sm:block">
               <div className="flex items-center gap-1.5 rounded-full border border-amber-500/10 bg-background/60 px-3 py-1.5 text-[10px] text-muted-foreground backdrop-blur-xl">
                 <Globe size={10} />
-                <span>Click any highlighted region</span>
+                <span>Kliknite na osvetljeni region</span>
               </div>
             </div>
           </motion.div>

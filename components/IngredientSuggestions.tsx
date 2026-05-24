@@ -76,11 +76,11 @@ export function IngredientSuggestions({
       >
         {isLoading ? (
           <div className="p-3 text-sm text-muted-foreground">
-            Loading ingredients...
+            Učitavanje sastojaka...
           </div>
         ) : !hasResults ? (
           <div className="p-3 text-sm text-muted-foreground">
-            No matching ingredients
+            Nema odgovarajućih sastojaka
           </div>
         ) : (
           <ul className="py-1" role="listbox">

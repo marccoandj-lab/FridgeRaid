@@ -20,13 +20,13 @@ export default function FavoritesPage() {
       <Navbar />
       <main className="mx-auto max-w-7xl px-4 pb-16 pt-8">
       <h1 className="mb-6 font-heading text-2xl font-bold text-foreground sm:mb-8 sm:text-4xl">
-        Saved Recipes
+        Sačuvani recepti
       </h1>
 
       {sorted.length === 0 ? (
         <EmptyState
           type="no-favorites"
-          action={{ label: 'Find recipes', href: '/' }}
+          action={{ label: 'Pronađi recepte', href: '/' }}
         />
       ) : (
         <AnimatePresence mode="popLayout">

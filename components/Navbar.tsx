@@ -28,7 +28,7 @@ export function Navbar() {
             )}
           >
             <LayoutList size={18} />
-            <span className="hidden sm:inline">Categories</span>
+            <span className="hidden sm:inline">Kategorije</span>
           </Link>
           <Link
             href="/continents"
@@ -37,7 +37,7 @@ export function Navbar() {
             )}
           >
             <Compass size={18} />
-            <span className="hidden sm:inline">Explore</span>
+            <span className="hidden sm:inline">Istraži</span>
           </Link>
           <Link
             href="/favorites"
@@ -46,7 +46,7 @@ export function Navbar() {
             )}
           >
             <Heart size={18} />
-            <span className="hidden sm:inline">Favorites</span>
+            <span className="hidden sm:inline">Omiljeni</span>
             {favorites.length > 0 && (
               <span className="flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-medium text-primary-foreground">
                 {favorites.length}
@@ -60,7 +60,7 @@ export function Navbar() {
             )}
           >
             <CalendarDays size={18} />
-            <span className="hidden sm:inline">Plan</span>
+            <span className="hidden sm:inline">Planer</span>
           </Link>
           <Link
             href="/cookbooks"
@@ -69,7 +69,7 @@ export function Navbar() {
             )}
           >
             <BookOpen size={18} />
-            <span className="hidden sm:inline">Cookbooks</span>
+            <span className="hidden sm:inline">Kuvarice</span>
           </Link>
           {!isLoading && (
             <Link
@@ -79,7 +79,7 @@ export function Navbar() {
               )}
             >
               <User size={18} />
-              <span className="hidden sm:inline">{user ? 'Profile' : 'Sign In'}</span>
+              <span className="hidden sm:inline">{user ? 'Profil' : 'Prijava'}</span>
             </Link>
           )}
         </div>

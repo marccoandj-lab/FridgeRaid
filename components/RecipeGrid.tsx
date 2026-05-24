@@ -105,7 +105,7 @@ export function RecipeGrid({
       {isLoadingMore && (
         <div className="flex items-center justify-center py-8">
           <Loader2 size={20} className="animate-spin text-amber-500" />
-          <span className="ml-2 text-sm text-muted-foreground">Loading more...</span>
+          <span className="ml-2 text-sm text-muted-foreground">Učitavanje još...</span>
         </div>
       )}
 
@@ -115,7 +115,7 @@ export function RecipeGrid({
 
       {!hasMore && meals.length > 0 && (
         <p className="py-6 text-center text-xs text-muted-foreground">
-          All recipes loaded
+          Svi recepti učitani
         </p>
       )}
     </>

@@ -18,10 +18,10 @@ const ICONS = {
 } as const
 
 const MESSAGES = {
-  'no-ingredients': 'Add some ingredients to find recipes',
-  'no-results': 'No recipes found with those ingredients. Try removing one.',
-  'no-favorites': 'No saved recipes yet. Start searching!',
-  error: 'Something went wrong. Please try again.',
+  'no-ingredients': 'Dodajte sastojke da biste pronašli recepte',
+  'no-results': 'Nema recepata sa tim sastojcima. Pokušajte ukloniti jedan.',
+  'no-favorites': 'Još uvek nema sačuvanih recepata. Započnite pretragu!',
+  error: 'Nešto je pošlo naopako. Pokušajte ponovo.',
 } as const
 
 export function EmptyState({

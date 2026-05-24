@@ -19,9 +19,9 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Fridge Raid — Open your fridge. Find your meal.",
+  title: "Fridge Raid — Otvorite frižider. Pronađite obrok.",
   description:
-    "Type in ingredients you have at home and instantly discover recipes you can make. No signup, no fuss.",
+    "Ukucajte sastojke koje imate kod kuće i odmah otkrijte recepte koje možete napraviti. Bez registracije, bez muke.",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
@@ -45,7 +45,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="sr"
       className={`${playfair.variable} ${dmSans.variable} h-full antialiased dark`}
     >
       <body className="min-h-full flex flex-col">

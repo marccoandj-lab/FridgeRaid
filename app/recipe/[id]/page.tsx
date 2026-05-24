@@ -51,10 +51,10 @@ export default function RecipeDetailPage() {
           setMeal(data)
           setIngredientList(parseIngredients(data))
         } else {
-          setError('Recipe not found')
+          setError('Recept nije pronađen')
         }
       })
-      .catch(() => setError('Failed to load recipe'))
+      .catch(() => setError('Učitavanje recepta nije uspelo'))
       .finally(() => setIsLoading(false))
   }, [id])
 
@@ -181,7 +181,7 @@ export default function RecipeDetailPage() {
               className="flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               <Minimize2 size={16} />
-              Exit
+              Izlaz
             </button>
             <span className="font-heading text-sm font-bold text-amber-500">
               {currentStep + 1} / {steps.length}
@@ -237,9 +237,9 @@ export default function RecipeDetailPage() {
               }`}
             >
               {completedSteps.has(currentStep) ? (
-                <><Check size={20} /> Step completed</>
+                <><Check size={20} /> Korak završen</>
               ) : (
-                <><Check size={20} /> Mark as done</>
+                <><Check size={20} /> Označi kao gotovo</>
               )}
             </button>
           </div>
@@ -259,7 +259,7 @@ export default function RecipeDetailPage() {
         >
           <Button variant="ghost" onClick={() => router.back()} className="gap-2 text-muted-foreground">
             <ArrowLeft size={16} />
-            Back
+            Nazad
           </Button>
         </motion.div>
 
@@ -327,16 +327,16 @@ export default function RecipeDetailPage() {
       >
         <div className="flex items-center gap-2 text-muted-foreground">
           <ChefHat size={16} className="text-amber-500 shrink-0" />
-          <span>{ingredientList.length} ingredients</span>
+          <span>{ingredientList.length} sastojaka</span>
         </div>
         <div className="flex items-center gap-2 text-muted-foreground">
           <UtensilsCrossed size={16} className="text-amber-500 shrink-0" />
-          <span>{steps.length} steps</span>
+          <span>{steps.length} koraka</span>
         </div>
         {matchCount > 0 && (
           <div className="flex items-center gap-2 text-emerald-400">
             <Check size={16} className="shrink-0" />
-            <span>{matchCount} ingredient{matchCount !== 1 ? 's' : ''} you have</span>
+            <span>{matchCount} {matchCount !== 1 ? 'sastojaka imate' : 'sastojak imate'}</span>
           </div>
         )}
         <button
@@ -346,7 +346,7 @@ export default function RecipeDetailPage() {
           }`}
         >
           <CookingPot size={16} className="shrink-0" />
-          <span>{cooked ? 'Cooked before' : 'Mark as cooked'}</span>
+          <span>{cooked ? 'Već skuvano' : 'Označi kao skuvano'}</span>
         </button>
       </motion.div>
 
@@ -388,7 +388,7 @@ export default function RecipeDetailPage() {
         transition={{ delay: 0.25, duration: 0.4 }}
         className="mb-8 flex flex-wrap items-center gap-4"
       >
-        <span className="text-sm font-medium text-foreground">Servings</span>
+        <span className="text-sm font-medium text-foreground">Porcije</span>
         <div className="flex items-center gap-3">
           <button
             onClick={() => handleServingsChange(-1)}
@@ -411,7 +411,7 @@ export default function RecipeDetailPage() {
             onClick={() => setServings(DEFAULT_SERVINGS)}
             className="text-xs text-muted-foreground underline-offset-2 hover:text-foreground hover:underline"
           >
-            Reset
+            Resetuj
           </button>
         )}
       </motion.div>
@@ -424,9 +424,9 @@ export default function RecipeDetailPage() {
         className="mb-10 sm:mb-12"
       >
         <h2 className="mb-4 font-heading text-lg font-bold text-foreground sm:mb-5 sm:text-xl">
-          Ingredients
+          Sastojci
           {servings !== DEFAULT_SERVINGS && (
-            <span className="ml-2 text-sm font-normal text-muted-foreground">(scaled for {servings})</span>
+            <span className="ml-2 text-sm font-normal text-muted-foreground">(prilagođeno za {servings})</span>
           )}
         </h2>
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
@@ -470,15 +470,15 @@ export default function RecipeDetailPage() {
         className="mb-10 sm:mb-12"
       >
         <div className="mb-4 flex items-center justify-between sm:mb-5">
-          <h2 className="font-heading text-lg font-bold text-foreground sm:text-xl">Instructions</h2>
+          <h2 className="font-heading text-lg font-bold text-foreground sm:text-xl">Uputstvo</h2>
           <div className="flex items-center gap-3">
-            <span className="text-xs text-muted-foreground">{completedSteps.size}/{steps.length} done</span>
+            <span className="text-xs text-muted-foreground">{completedSteps.size}/{steps.length} završeno</span>
             <button
               onClick={enterCookMode}
               className="inline-flex items-center gap-1.5 rounded-lg bg-amber-500/20 px-3 py-1.5 text-xs font-semibold text-amber-400 transition-all hover:bg-amber-500/30 active:scale-[0.96]"
             >
               <Maximize2 size={12} />
-              Cook mode
+              Režim kuvanja
             </button>
           </div>
         </div>
@@ -527,7 +527,7 @@ export default function RecipeDetailPage() {
             <a href={meal.strYoutube} target="_blank" rel="noopener noreferrer">
               <Button variant="outline" size="sm" className="gap-2 border-amber-500/20 text-muted-foreground hover:text-foreground">
                 <Film size={16} />
-                Watch on YouTube
+                Pogledaj na YouTube-u
               </Button>
             </a>
           )}
@@ -535,7 +535,7 @@ export default function RecipeDetailPage() {
             <a href={meal.strSource} target="_blank" rel="noopener noreferrer">
               <Button variant="outline" size="sm" className="gap-2 border-amber-500/20 text-muted-foreground hover:text-foreground">
                 <ExternalLink size={16} />
-                Original Source
+                Originalni izvor
               </Button>
             </a>
           )}

@@ -29,7 +29,7 @@ export function CookbookCard({ cookbook, isOwner, onDelete, index = 0 }: Cookboo
             </div>
           </div>
           {isOwner && onDelete && (
-            <button onClick={(e) => { e.preventDefault(); e.stopPropagation(); if (confirm("Delete for everyone?")) onDelete(cookbook.id); }}
+            <button onClick={(e) => { e.preventDefault(); e.stopPropagation(); if (confirm("Obriši za sve?")) onDelete(cookbook.id); }}
               className="absolute right-3 bottom-3 opacity-0 transition-opacity group-hover:opacity-100 text-muted-foreground hover:text-red-400">
               <Trash2 size={14} />
             </button>

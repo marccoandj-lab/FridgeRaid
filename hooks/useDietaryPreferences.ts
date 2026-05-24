@@ -3,14 +3,14 @@
 import { useState, useCallback, useEffect } from "react";
 
 export const DIET_OPTIONS = [
-  { id: "vegetarian", label: "Vegetarian" },
-  { id: "vegan", label: "Vegan" },
-  { id: "gluten-free", label: "Gluten-Free" },
-  { id: "keto", label: "Keto / Low-Carb" },
+  { id: "vegetarian", label: "Vegeterijanska" },
+  { id: "vegan", label: "Veganska" },
+  { id: "gluten-free", label: "Bez glutena" },
+  { id: "keto", label: "Keto / Malo ugljenih hidrata" },
   { id: "paleo", label: "Paleo" },
-  { id: "dairy-free", label: "Dairy-Free" },
-  { id: "nut-free", label: "Nut-Free" },
-  { id: "low-calorie", label: "Low Calorie" },
+  { id: "dairy-free", label: "Bez mlečnih proizvoda" },
+  { id: "nut-free", label: "Bez orašastih plodova" },
+  { id: "low-calorie", label: "Malo kalorija" },
 ] as const;
 
 export type DietId = (typeof DIET_OPTIONS)[number]["id"];

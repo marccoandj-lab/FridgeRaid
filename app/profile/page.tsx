@@ -25,7 +25,7 @@ export default function ProfilePage() {
   if (isLoading || !user) return null
 
   const created = user.metadata.creationTime
-    ? new Date(user.metadata.creationTime).toLocaleDateString('en-US', {
+    ? new Date(user.metadata.creationTime).toLocaleDateString('sr-RS', {
         year: 'numeric', month: 'long', day: 'numeric',
       })
     : null
@@ -57,7 +57,7 @@ export default function ProfilePage() {
         {created && (
           <p className="mt-1 flex items-center gap-1.5 text-xs text-muted-foreground/60">
             <Calendar size={12} />
-            Member since {created}
+            Član od {created}
           </p>
         )}
       </motion.div>
@@ -70,10 +70,10 @@ export default function ProfilePage() {
         className="mb-6 grid grid-cols-4 gap-2 sm:mb-8 sm:gap-3"
       >
         {[
-          { icon: ChefHat, label: 'Saved', value: favorites.length },
-          { icon: Flame, label: 'Day streak', value: currentStreak },
-          { icon: Sun, label: 'Best streak', value: longestStreak },
-          { icon: UtensilsCrossed, label: 'Cooked', value: totalCooked },
+          { icon: ChefHat, label: 'Sačuvano', value: favorites.length },
+          { icon: Flame, label: 'Dana uzastopno', value: currentStreak },
+          { icon: Sun, label: 'Najbolji niz', value: longestStreak },
+          { icon: UtensilsCrossed, label: 'Skuhano', value: totalCooked },
         ].map(({ icon: Icon, label, value }) => (
           <div key={label} className="rounded-xl border border-amber-500/10 bg-card p-3 text-center">
             <Icon size={18} className="mx-auto mb-1 text-amber-500" />
@@ -90,7 +90,7 @@ export default function ProfilePage() {
         transition={{ delay: 0.15 }}
         className="mb-6 sm:mb-8"
       >
-        <h2 className="mb-3 font-heading text-sm font-bold text-foreground">Dietary Preferences</h2>
+        <h2 className="mb-3 font-heading text-sm font-bold text-foreground">Preference u ishrani</h2>
         <div className="flex flex-wrap gap-2">
           {DIET_OPTIONS.map((diet) => {
             const active = diets.includes(diet.id)
@@ -126,7 +126,7 @@ export default function ProfilePage() {
           className="flex w-full items-center justify-center gap-2 rounded-xl border border-red-500/20 bg-red-500/5 px-4 py-2.5 text-sm text-red-400 transition-all hover:bg-red-500/10 active:scale-[0.98]"
         >
           <LogOut size={16} />
-          Sign Out
+          Odjavi se
         </button>
       </motion.div>
     </main>

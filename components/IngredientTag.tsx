@@ -23,7 +23,7 @@ export function IngredientTag({ name, color, onRemove }: IngredientTagProps) {
       <button
         onClick={onRemove}
         className="flex items-center justify-center p-0.5 transition-opacity hover:opacity-70"
-        aria-label={`Remove ${name}`}
+        aria-label={`Ukloni ${name}`}
       >
         <X size={12} />
       </button>

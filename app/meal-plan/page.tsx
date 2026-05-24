@@ -19,6 +19,13 @@ const MEAL_ICONS: Record<string, React.ReactNode> = {
 
 const MEAL_TYPES: MealPlanEntry["mealType"][] = ["breakfast", "lunch", "dinner", "snack"]
 
+const MEAL_LABELS: Record<string, string> = {
+  breakfast: "Doručak",
+  lunch: "Ručak",
+  dinner: "Večera",
+  snack: "Užina",
+}
+
 function getWeekDates(start: Date): string[] {
   const dates: string[] = []
   for (let i = 0; i < 7; i++) {
@@ -57,7 +64,7 @@ export default function MealPlanPage() {
 
   const dayNames = weekDates.map((date) => {
     const d = new Date(date)
-    return d.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" }).replace(",", "")
+    return d.toLocaleDateString("sr-RS", { weekday: "short", month: "short", day: "numeric" }).replace(",", "")
   })
 
   const addRecipe = () => {
@@ -79,14 +86,14 @@ export default function MealPlanPage() {
       <main className="mx-auto max-w-6xl px-4 pb-16 pt-8">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-6 flex items-center justify-between sm:mb-8">
           <div>
-            <h1 className="font-heading text-2xl font-bold text-foreground sm:text-4xl">Meal Plan</h1>
-            <p className="mt-1 text-sm text-muted-foreground">Plan your week ahead</p>
+            <h1 className="font-heading text-2xl font-bold text-foreground sm:text-4xl">Planer obroka</h1>
+            <p className="mt-1 text-sm text-muted-foreground">Planirajte svoju nedelju unapred</p>
           </div>
           <div className="flex items-center gap-2">
             <button onClick={() => { const d = new Date(weekStart); d.setDate(d.getDate() - 7); setWeekStart(d) }} className="flex h-8 w-8 items-center justify-center rounded-lg bg-card text-muted-foreground ring-1 ring-foreground/10 hover:text-foreground active:scale-[0.92]">
               <ChevronLeft size={16} />
             </button>
-            <button onClick={() => setWeekStart(getMonday(new Date()))} className="rounded-lg bg-card px-3 py-1.5 text-xs text-muted-foreground ring-1 ring-foreground/10 hover:text-foreground active:scale-[0.96]">Today</button>
+            <button onClick={() => setWeekStart(getMonday(new Date()))} className="rounded-lg bg-card px-3 py-1.5 text-xs text-muted-foreground ring-1 ring-foreground/10 hover:text-foreground active:scale-[0.96]">Danas</button>
             <button onClick={() => { const d = new Date(weekStart); d.setDate(d.getDate() + 7); setWeekStart(d) }} className="flex h-8 w-8 items-center justify-center rounded-lg bg-card text-muted-foreground ring-1 ring-foreground/10 hover:text-foreground active:scale-[0.92]">
               <ChevronRight size={16} />
             </button>
@@ -96,8 +103,8 @@ export default function MealPlanPage() {
         {plan.length === 0 && !newRecipe && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-amber-500/20 bg-card/50 py-20 text-center">
             <CalendarDays size={48} className="mb-4 text-amber-500/30" />
-            <p className="font-heading text-lg font-bold text-foreground">No meals planned</p>
-            <p className="mt-1 text-sm text-muted-foreground">Tap a meal slot to add a recipe</p>
+            <p className="font-heading text-lg font-bold text-foreground">Nema planiranih obroka</p>
+            <p className="mt-1 text-sm text-muted-foreground">Dodirnite mesto za obrok da dodate recept</p>
           </motion.div>
         )}
 
@@ -110,7 +117,7 @@ export default function MealPlanPage() {
               }`}>
                 <span className="font-heading text-sm font-bold">{dayNames[di]}</span>
                 {date === today && (
-                  <span className="rounded-full bg-amber-500/20 px-2 py-0.5 text-[10px] font-medium text-amber-300">Today</span>
+                  <span className="rounded-full bg-amber-500/20 px-2 py-0.5 text-[10px] font-medium text-amber-300">Danas</span>
                 )}
               </div>
               <div className="space-y-1.5">
@@ -141,7 +148,7 @@ export default function MealPlanPage() {
                             </button>
                           </div>
                         ) : (
-                          <span className="text-xs text-muted-foreground/60 capitalize">{mealType}</span>
+                          <span className="text-xs text-muted-foreground/60">{MEAL_LABELS[mealType]}</span>
                         )}
                       </div>
                     </div>
@@ -190,7 +197,7 @@ export default function MealPlanPage() {
                         ) : (
                           <span className="flex items-center gap-1 text-[9px] text-muted-foreground/50">
                             {MEAL_ICONS[mealType]}
-                            {mealType}
+                            {MEAL_LABELS[mealType]}
                           </span>
                         )}
                       </div>
@@ -213,27 +220,27 @@ export default function MealPlanPage() {
                 className="w-full max-w-sm rounded-2xl border border-amber-500/20 bg-card p-5 shadow-xl"
                 onClick={(e) => e.stopPropagation()}
               >
-                <h3 className="mb-1 font-heading text-lg font-bold text-foreground">Add to Meal Plan</h3>
+                <h3 className="mb-1 font-heading text-lg font-bold text-foreground">Dodaj u planer</h3>
                 <p className="mb-4 text-xs text-muted-foreground">
-                  {newRecipe.date === today ? "Today" : new Date(newRecipe.date).toLocaleDateString("en-US", { weekday: "long" })} — {newRecipe.mealType}
+                  {newRecipe.date === today ? "Danas" : new Date(newRecipe.date).toLocaleDateString("sr-RS", { weekday: "long" })} — {newRecipe.mealType === 'breakfast' ? 'doručak' : newRecipe.mealType === 'lunch' ? 'ručak' : newRecipe.mealType === 'dinner' ? 'večera' : 'užina'}
                 </p>
                 <div className="space-y-3">
                   <input
                     value={recipeName}
                     onChange={(e) => setRecipeName(e.target.value)}
-                    placeholder="Recipe name"
+                    placeholder="Naziv recepta"
                     className="w-full rounded-xl border border-foreground/10 bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-amber-500/40 focus:outline-none"
                     onKeyDown={(e) => e.key === "Enter" && addRecipe()}
                   />
                   <input
                     value={recipeId}
                     onChange={(e) => setRecipeId(e.target.value)}
-                    placeholder="Recipe ID (optional)"
+                    placeholder="ID recepta (opciono)"
                     className="w-full rounded-xl border border-foreground/10 bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-amber-500/40 focus:outline-none"
                   />
                   <div className="flex gap-2">
-                    <button onClick={() => setNewRecipe(null)} className="flex-1 rounded-xl border border-foreground/10 px-4 py-2.5 text-sm text-muted-foreground transition-colors hover:text-foreground active:scale-[0.98]">Cancel</button>
-                    <button onClick={addRecipe} className="flex-1 rounded-xl bg-amber-500 px-4 py-2.5 text-sm font-semibold text-black transition-all hover:bg-amber-400 active:scale-[0.98]">Add</button>
+                    <button onClick={() => setNewRecipe(null)} className="flex-1 rounded-xl border border-foreground/10 px-4 py-2.5 text-sm text-muted-foreground transition-colors hover:text-foreground active:scale-[0.98]">Otkaži</button>
+                    <button onClick={addRecipe} className="flex-1 rounded-xl bg-amber-500 px-4 py-2.5 text-sm font-semibold text-black transition-all hover:bg-amber-400 active:scale-[0.98]">Dodaj</button>
                   </div>
                 </div>
               </motion.div>

@@ -16,7 +16,7 @@ interface CookbookRecipeCardProps {
 }
 
 export function CookbookRecipeCard({ recipe, isLiked, currentUserId, onLike, onDelete, index = 0 }: CookbookRecipeCardProps) {
-  const displayName = recipe.type === "meal" ? (recipe.strMeal || "Untitled") : (recipe.name || "Untitled");
+  const displayName = recipe.type === "meal" ? (recipe.strMeal || "Bez naziva") : (recipe.name || "Bez naziva");
   const thumbnail = recipe.type === "meal" ? recipe.strMealThumb : recipe.imageUrl;
   const canDelete = recipe.addedBy === currentUserId;
 
@@ -29,11 +29,11 @@ export function CookbookRecipeCard({ recipe, isLiked, currentUserId, onLike, onD
         ) : (
           <div className="flex h-full items-center justify-center"><span className="font-heading text-2xl font-bold text-amber-500/30">{displayName.charAt(0).toUpperCase()}</span></div>
         )}
-        <span className="absolute left-2 top-2 rounded-full bg-background/80 px-2 py-0.5 text-[10px] font-medium text-muted-foreground backdrop-blur-sm">{recipe.type === "meal" ? "MealDB" : "Custom"}</span>
+        <span className="absolute left-2 top-2 rounded-full bg-background/80 px-2 py-0.5 text-[10px] font-medium text-muted-foreground backdrop-blur-sm">{recipe.type === "meal" ? "MealDB" : "Prilagođeno"}</span>
       </div>
       <div className="p-3">
         <h3 className="font-heading line-clamp-1 text-sm font-bold text-foreground group-hover:text-amber-300 transition-colors">{displayName}</h3>
-        <p className="mt-1 flex items-center gap-1 text-[11px] text-muted-foreground"><User size={11} />{recipe.authorName || "Anonymous"}</p>
+        <p className="mt-1 flex items-center gap-1 text-[11px] text-muted-foreground"><User size={11} />{recipe.authorName || "Anonimno"}</p>
         <div className="mt-2 flex items-center justify-between">
           <button onClick={(e) => { e.stopPropagation(); onLike(recipe.id); }} className={cn("flex items-center gap-1 rounded-full px-2 py-1 transition-colors text-xs", isLiked ? "text-red-400" : "text-muted-foreground hover:text-red-400")}>
             <Heart size={14} className={isLiked ? "fill-red-400" : ""} />{recipe.likes.length}

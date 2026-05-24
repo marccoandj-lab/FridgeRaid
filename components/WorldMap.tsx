@@ -31,10 +31,10 @@ export function WorldMap({ hoveredContinent, setHoveredContinent, onContinentCli
       <div className="pointer-events-none absolute inset-x-0 top-0 z-10 bg-gradient-to-b from-background via-background/70 to-transparent pb-16 pt-4">
         <div className="pointer-events-auto mx-auto max-w-7xl px-4">
           <h1 className="font-heading text-3xl font-bold text-foreground sm:text-4xl">
-            Explore by Continent
+            Istraži po kontinentu
           </h1>
           <p className="mt-1 text-base text-muted-foreground">
-            Click a country or card to discover its cuisine
+            Kliknite na državu ili karticu da otkrijete njenu kuhinju
           </p>
         </div>
       </div>

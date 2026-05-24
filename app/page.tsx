@@ -51,7 +51,7 @@ export default function HomePage() {
           Fridge Raid
         </h1>
         <p className="text-sm text-muted-foreground sm:text-base">
-          Pick ingredients. Find recipes. Cook.
+          Birajte sastojke. Pronađite recepte. Kuvajte.
         </p>
       </motion.section>
 
@@ -67,7 +67,7 @@ export default function HomePage() {
           className="inline-flex items-center gap-2 rounded-xl border border-amber-500/20 bg-card px-4 py-3 text-sm text-muted-foreground transition-all hover:border-amber-500/40 hover:text-foreground active:scale-[0.98]"
         >
           <Compass size={16} className="text-amber-500" />
-          Explore cuisines
+          Istraži kuhinje
         </Link>
         <SurpriseMeButton meals={meals} ingredients={ingredients} />
       </motion.div>
@@ -83,10 +83,10 @@ export default function HomePage() {
           <div className="mb-3 flex items-center gap-2 sm:mb-4">
             <Sparkles size={16} className="text-amber-500" />
             <h2 className="font-heading text-base font-bold text-foreground sm:text-lg">
-              Food of the Day
+              Obrok dana
             </h2>
             <span className="text-[10px] text-muted-foreground sm:text-xs">
-              — updated daily
+              — ažurira se svakodnevno
             </span>
           </div>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
@@ -154,7 +154,7 @@ export default function HomePage() {
           className="mb-4 flex flex-wrap items-center gap-2 sm:mb-6"
         >
           <Sun size={14} className="text-amber-500" />
-          <span className="text-xs text-muted-foreground">In season now:</span>
+          <span className="text-xs text-muted-foreground">Sezonsko:</span>
           {seasonal.slice(0, 8).map((item) => (
             <button
               key={item}
@@ -224,10 +224,10 @@ export default function HomePage() {
               className="inline-flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
             >
               <Bookmark size={12} />
-              Save search
+              Sačuvaj pretragu
             </button>
             <button onClick={clearAll} className="text-xs text-muted-foreground transition-colors hover:text-foreground">
-              Clear all
+              Obriši sve
             </button>
           </>
         )}
@@ -242,7 +242,7 @@ export default function HomePage() {
               <input
                 value={searchName}
                 onChange={(e) => setSearchName(e.target.value)}
-                placeholder="Search name..."
+                placeholder="Naziv pretrage..."
                 className="h-8 w-36 rounded-lg border border-foreground/10 bg-card px-2.5 text-xs text-foreground placeholder:text-muted-foreground focus:border-amber-500/40 focus:outline-none"
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' && searchName.trim()) {
@@ -262,7 +262,7 @@ export default function HomePage() {
                 }}
                 className="rounded-lg bg-amber-500/20 px-2.5 py-1.5 text-xs font-medium text-amber-400 hover:bg-amber-500/30"
               >
-                Save
+                Sačuvaj
               </button>
             </motion.div>
           )}
@@ -278,8 +278,8 @@ export default function HomePage() {
             className="mb-3 text-xs text-muted-foreground sm:mb-4"
           >
             {ingredients.length > 0
-              ? `Showing matching and suggested recipes for your ingredients`
-              : 'Infinite recipe inspiration'}
+                             ? `Prikazujem odgovarajuće i predložene recepte za vaše sastojke`
+              : 'Beskrajna inspiracija za recepte'}
           </motion.p>
         )}
         <RecipeGrid
@@ -294,7 +294,7 @@ export default function HomePage() {
       </section>
 
       <footer className="mt-8 text-center text-xs text-muted-foreground/50 sm:mt-12">
-        Powered by TheMealDB
+        Pokreće TheMealDB
       </footer>
       </main>
     </>

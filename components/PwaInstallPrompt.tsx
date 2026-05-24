@@ -51,14 +51,14 @@ export function PwaInstallPrompt() {
             <Download size={18} className="text-amber-400" />
           </div>
           <div className="min-w-0 flex-1">
-            <p className="text-sm font-semibold text-foreground">Install Fridge Raid</p>
-            <p className="text-xs text-muted-foreground">Add to your homescreen for quick access</p>
+            <p className="text-sm font-semibold text-foreground">Instaliraj Fridge Raid</p>
+            <p className="text-xs text-muted-foreground">Dodaj na početni ekran za brz pristup</p>
           </div>
           <button
             onClick={handleInstall}
             className="rounded-lg bg-amber-500 px-4 py-2 text-xs font-semibold text-black transition-all hover:bg-amber-400"
           >
-            Install
+            Instaliraj
           </button>
           <button
             onClick={() => setShowPrompt(false)}

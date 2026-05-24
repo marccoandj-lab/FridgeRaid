@@ -29,7 +29,7 @@ export function FavoriteButton({
         e.stopPropagation()
         toggleFavorite({ idMeal: mealId, strMeal: mealName, strMealThumb: mealThumb, savedAt: Date.now() })
       }}
-      aria-label={liked ? 'Remove from favorites' : 'Add to favorites'}
+      aria-label={liked ? 'Ukloni iz omiljenih' : 'Dodaj u omiljene'}
       className={cn(
         'flex h-8 w-8 items-center justify-center rounded-full bg-black/50 backdrop-blur-sm transition-colors hover:bg-black/70',
         className

@@ -103,7 +103,7 @@ export default function AddRecipePage() {
       })
       router.push(`/cookbooks/${id}`)
     } catch {
-      setSubmitError('Failed to add recipe. Try again.')
+      setSubmitError('Dodavanje recepta nije uspelo. Pokušajte ponovo.')
       setSubmitting(false)
     }
   }, [addRecipe, id, router, name, ingredients, instructions, imageUrl])
@@ -119,7 +119,7 @@ export default function AddRecipePage() {
         className="mb-4 flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground sm:mb-6"
       >
         <ArrowLeft size={16} />
-        Back to Cookbook
+        Nazad u kuvaricu
       </Link>
 
       <motion.div
@@ -128,10 +128,10 @@ export default function AddRecipePage() {
         className="mb-6 sm:mb-8"
       >
         <h1 className="font-heading text-2xl font-bold text-foreground sm:text-4xl">
-          Add Recipe
+          Dodaj recept
         </h1>
         <p className="mt-1 text-sm text-muted-foreground">
-          Search TheMealDB or create your own custom recipe.
+          Pretražite TheMealDB ili napravite svoj prilagođeni recept.
         </p>
       </motion.div>
 
@@ -146,7 +146,7 @@ export default function AddRecipePage() {
                 : 'text-muted-foreground hover:text-foreground'
             }`}
           >
-            {t === 'meals' ? 'From Meals' : 'Custom Recipe'}
+            {t === 'meals' ? 'Iz obroka' : 'Prilagođeni recept'}
           </button>
         ))}
       </div>
@@ -158,7 +158,7 @@ export default function AddRecipePage() {
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search meals..."
+              placeholder="Pretraži obroke..."
               className="w-full rounded-xl border border-foreground/10 bg-card py-3 pl-10 pr-4 text-sm text-foreground placeholder-muted-foreground outline-none transition-colors focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20"
             />
           </div>
@@ -171,7 +171,7 @@ export default function AddRecipePage() {
 
           {!searching && searched && results.length === 0 && (
             <p className="py-12 text-center text-sm text-muted-foreground">
-              {searchError ? 'Search failed. Check your connection.' : 'No meals found'}
+              {searchError ? 'Pretraga nije uspela. Proverite vezu.' : 'Nema pronađenih obroka'}
             </p>
           )}
 
@@ -215,12 +215,12 @@ export default function AddRecipePage() {
         <form onSubmit={handleSubmitCustom} className="space-y-5">
           <div>
             <label className="mb-1.5 block text-sm font-medium text-foreground">
-              Recipe Name
+              Naziv recepta
             </label>
             <input
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="e.g. Grandma's Lasagna"
+              placeholder="npr. Bakina lasanja"
               required
               className="w-full rounded-xl border border-foreground/10 bg-card px-4 py-3 text-sm text-foreground placeholder-muted-foreground outline-none transition-colors focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20"
             />
@@ -228,12 +228,12 @@ export default function AddRecipePage() {
 
           <div>
             <label className="mb-1.5 block text-sm font-medium text-foreground">
-              Ingredients (one per line)
+              Sastojci (jedan po redu)
             </label>
             <textarea
               value={ingredients}
               onChange={(e) => setIngredients(e.target.value)}
-              placeholder="1 lb ground beef&#10;2 cups shredded mozzarella&#10;1 jar marinara sauce"
+              placeholder="500g mlevenog mesa&#10;2 šolje rendane mocarele&#10;1 tegla marinara sosa"
               rows={5}
               required
               className="w-full resize-none rounded-xl border border-foreground/10 bg-card px-4 py-3 text-sm text-foreground placeholder-muted-foreground outline-none transition-colors focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20"
@@ -242,12 +242,12 @@ export default function AddRecipePage() {
 
           <div>
             <label className="mb-1.5 block text-sm font-medium text-foreground">
-              Instructions
+              Uputstvo
             </label>
             <textarea
               value={instructions}
               onChange={(e) => setInstructions(e.target.value)}
-              placeholder="Step-by-step cooking instructions..."
+              placeholder="Korak po korak uputstvo za kuvanje..."
               rows={6}
               required
               className="w-full resize-none rounded-xl border border-foreground/10 bg-card px-4 py-3 text-sm text-foreground placeholder-muted-foreground outline-none transition-colors focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20"
@@ -256,7 +256,7 @@ export default function AddRecipePage() {
 
           <div>
             <label className="mb-1.5 block text-sm font-medium text-foreground">
-              Image URL <span className="text-muted-foreground">(optional)</span>
+              URL slike <span className="text-muted-foreground">(opciono)</span>
             </label>
             <input
               value={imageUrl}
@@ -280,7 +280,7 @@ export default function AddRecipePage() {
             ) : (
               <Plus size={18} />
             )}
-            Add to Cookbook
+            Dodaj u kuvaricu
           </button>
         </form>
       )}

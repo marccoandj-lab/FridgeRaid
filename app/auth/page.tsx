@@ -27,9 +27,9 @@ export default function AuthPage() {
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
-    if (!email || !password) { setError('Fill in all fields'); return }
-    if (mode === 'signup' && !name) { setError('Fill in all fields'); return }
-    if (password.length < 6) { setError('Password must be at least 6 characters'); return }
+    if (!email || !password) { setError('Popunite sva polja'); return }
+    if (mode === 'signup' && !name) { setError('Popunite sva polja'); return }
+    if (password.length < 6) { setError('Lozinka mora imati najmanje 6 karaktera'); return }
 
     setIsSubmitting(true)
     try {
@@ -40,12 +40,12 @@ export default function AuthPage() {
       }
       router.push('/')
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : 'Something went wrong'
-      if (msg.includes('auth/user-not-found')) setError('No account with this email')
-      else if (msg.includes('auth/wrong-password')) setError('Wrong password')
-      else if (msg.includes('auth/email-already-in-use')) setError('Email already in use')
-      else if (msg.includes('auth/invalid-credential')) setError('Invalid email or password')
-      else if (msg.includes('auth/weak-password')) setError('Password too weak')
+      const msg = err instanceof Error ? err.message : 'Nešto je pošlo naopako'
+      if (msg.includes('auth/user-not-found')) setError('Nema naloga sa ovim email-om')
+      else if (msg.includes('auth/wrong-password')) setError('Pogrešna lozinka')
+      else if (msg.includes('auth/email-already-in-use')) setError('Email je već u upotrebi')
+      else if (msg.includes('auth/invalid-credential')) setError('Neispravan email ili lozinka')
+      else if (msg.includes('auth/weak-password')) setError('Lozinka je preslaba')
       else setError(msg)
     } finally {
       setIsSubmitting(false)
@@ -113,10 +113,10 @@ export default function AuthPage() {
             <IceCream size={32} className="text-amber-400" />
           </div>
           <h1 className="font-heading text-2xl font-bold text-foreground">
-            {mode === 'login' ? 'Welcome back' : 'Join Fridge Raid'}
+            {mode === 'login' ? 'Dobrodošli nazad' : 'Pridružite se Fridge Raid-u'}
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            {mode === 'login' ? 'Sign in to save your favorites' : 'Create your account'}
+            {mode === 'login' ? 'Prijavite se da sačuvate omiljene recepte' : 'Napravite svoj nalog'}
           </p>
         </motion.div>
 
@@ -138,7 +138,7 @@ export default function AuthPage() {
               {mode === 'signup' && (
                 <div>
                   <label className="mb-1.5 block text-xs font-medium text-muted-foreground">
-                    Name
+                    Ime
                   </label>
                   <div className="relative">
                     <User size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
@@ -146,7 +146,7 @@ export default function AuthPage() {
                       type="text"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      placeholder="Your name"
+                      placeholder="Vaše ime"
                       className="w-full rounded-xl border border-amber-500/10 bg-background py-2.5 pl-9 pr-3 text-sm text-foreground placeholder-muted-foreground outline-none transition-all focus:border-amber-500/30 focus:ring-2 focus:ring-amber-500/20"
                     />
                   </div>
@@ -163,7 +163,7 @@ export default function AuthPage() {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="you@example.com"
+                    placeholder="vi@primer.com"
                     className="w-full rounded-xl border border-amber-500/10 bg-background py-2.5 pl-9 pr-3 text-sm text-foreground placeholder-muted-foreground outline-none transition-all focus:border-amber-500/30 focus:ring-2 focus:ring-amber-500/20"
                   />
                 </div>
@@ -221,12 +221,12 @@ export default function AuthPage() {
                     >
                       <ChefHat size={16} />
                     </motion.span>
-                    {mode === 'login' ? 'Signing in...' : 'Creating account...'}
+                    {mode === 'login' ? 'Prijavljivanje...' : 'Pravljenje naloga...'}
                   </span>
                 ) : (
                   <span className="flex items-center justify-center gap-2">
                     <Sparkles size={16} />
-                    {mode === 'login' ? 'Sign In' : 'Create Account'}
+                    {mode === 'login' ? 'Prijavi se' : 'Napravi nalog'}
                   </span>
                 )}
               </button>
@@ -242,9 +242,9 @@ export default function AuthPage() {
               className="text-xs text-muted-foreground transition-colors hover:text-amber-400"
             >
               {mode === 'login' ? (
-                <>Don&apos;t have an account? <span className="font-medium underline underline-offset-2">Sign up</span></>
+                <>Nemate nalog? <span className="font-medium underline underline-offset-2">Registrujte se</span></>
               ) : (
-                <>Already have an account? <span className="font-medium underline underline-offset-2">Sign in</span></>
+                <>Već imate nalog? <span className="font-medium underline underline-offset-2">Prijavite se</span></>
               )}
             </button>
           </div>

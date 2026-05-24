@@ -74,7 +74,7 @@ export default function CategoriesPage() {
               className="mb-4 gap-2 text-muted-foreground hover:text-foreground"
             >
               <ChevronLeft size={16} />
-              All Categories
+              Sve kategorije
             </Button>
 
             <div className="mb-6">
@@ -82,7 +82,7 @@ export default function CategoriesPage() {
                 {selected}
               </h1>
               <p className="mt-1 text-sm text-muted-foreground">
-                {mealsLoading ? 'Loading...' : `${meals.length} recipes`}
+                {mealsLoading ? 'Učitavanje...' : `${meals.length} recepata`}
               </p>
             </div>
 
@@ -129,10 +129,10 @@ export default function CategoriesPage() {
               className="mb-6 space-y-1 sm:mb-8 sm:space-y-2"
             >
               <h1 className="font-heading text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
-                Browse by Category
+                Pregled po kategoriji
               </h1>
               <p className="text-sm text-muted-foreground sm:text-base">
-                Find recipes by meal type and cuisine category
+                Pronađite recepte po vrsti obroka i kulinarskoj kategoriji
               </p>
             </motion.section>
 
