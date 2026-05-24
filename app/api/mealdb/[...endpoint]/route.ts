@@ -11,8 +11,9 @@ export async function GET(
   const searchParams = request.nextUrl.searchParams.toString()
   const queryString = searchParams ? `?${searchParams}` : ''
   const url = `${MEALDB_BASE}/${path}${queryString}`
+  const isRandom = path.includes('random')
 
-  const res = await fetch(url, { next: { revalidate: 86400 } })
+  const res = await fetch(url, isRandom ? { cache: 'no-store' } : { next: { revalidate: 86400 } })
   const data = await res.json()
 
   return NextResponse.json(data, {
