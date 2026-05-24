@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { MealSummary } from '@/types/meal'
 import { FavoriteButton } from '@/components/FavoriteButton'
+import { AddToCookbookButton } from '@/components/AddToCookbookButton'
 
 interface RecipeCardProps {
   meal: MealSummary
@@ -28,11 +29,18 @@ export const RecipeCard = memo(function RecipeCard({
             loading={priority ? 'eager' : 'lazy'}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover/card:opacity-100" />
-          <FavoriteButton
-            mealId={meal.idMeal}
-            mealName={meal.strMeal}
-            mealThumb={meal.strMealThumb}
-          />
+          <div className="absolute right-2 top-2 z-10 flex gap-1.5">
+            <AddToCookbookButton
+              mealId={meal.idMeal}
+              mealName={meal.strMeal}
+              mealThumb={meal.strMealThumb}
+            />
+            <FavoriteButton
+              mealId={meal.idMeal}
+              mealName={meal.strMeal}
+              mealThumb={meal.strMealThumb}
+            />
+          </div>
         </div>
         <div className="p-3">
           <h3 className="font-heading line-clamp-2 text-sm font-bold text-foreground transition-colors group-hover/card:text-amber-300">

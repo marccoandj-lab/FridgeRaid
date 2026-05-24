@@ -11,6 +11,7 @@ import { Badge } from '@/components/ui/badge'
 import { Skeleton } from '@/components/ui/skeleton'
 import { EmptyState } from '@/components/EmptyState'
 import { FavoriteButton } from '@/components/FavoriteButton'
+import { AddToCookbookButton } from '@/components/AddToCookbookButton'
 import { fetchMealById, parseIngredients, getIngredientThumb } from '@/lib/mealdb'
 import { useIngredients } from '@/hooks/useIngredients'
 import type { MealDetail, RecipeIngredient } from '@/types/meal'
@@ -141,7 +142,13 @@ export default function RecipeDetailPage() {
               {meal.strMeal}
             </h1>
           </div>
-          <div className="absolute right-4 top-4">
+          <div className="absolute right-4 top-4 flex gap-2">
+            <AddToCookbookButton
+              mealId={meal.idMeal}
+              mealName={meal.strMeal}
+              mealThumb={meal.strMealThumb}
+              size="md"
+            />
             <FavoriteButton
               mealId={meal.idMeal}
               mealName={meal.strMeal}
