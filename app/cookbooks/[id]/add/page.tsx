@@ -32,6 +32,7 @@ export default function AddRecipePage() {
   const [searching, setSearching] = useState(false)
   const [searched, setSearched] = useState(false)
   const [adding, setAdding] = useState<string | null>(null)
+  const [searchError, setSearchError] = useState(false)
 
   const [name, setName] = useState('')
   const [ingredients, setIngredients] = useState('')
@@ -57,8 +58,12 @@ export default function AddRecipePage() {
     let cancelled = false
     setSearching(true)
     setSearched(false)
+    setSearchError(false)
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${encodeURIComponent(debouncedQuery)}`)
-      .then((r) => r.json())
+      .then((r) => {
+        if (!r.ok) throw new Error('Search failed')
+        return r.json()
+      })
       .then((data) => {
         if (cancelled) return
         setResults(data.meals || [])
@@ -70,6 +75,7 @@ export default function AddRecipePage() {
         setResults([])
         setSearched(true)
         setSearching(false)
+        setSearchError(true)
       })
     return () => { cancelled = true }
   }, [debouncedQuery])
@@ -80,18 +86,26 @@ export default function AddRecipePage() {
     router.push(`/cookbooks/${id}`)
   }, [addRecipe, id, router])
 
+  const [submitError, setSubmitError] = useState('')
+
   const handleSubmitCustom = useCallback(async (e: React.FormEvent) => {
     e.preventDefault()
     if (!name.trim()) return
     setSubmitting(true)
-    await addRecipe({
-      type: 'custom',
-      name: name.trim(),
-      ingredients: ingredients.split('\n').map((s) => s.trim()).filter(Boolean),
-      instructions: instructions.trim(),
-      imageUrl: imageUrl.trim() || undefined,
-    })
-    router.push(`/cookbooks/${id}`)
+    setSubmitError('')
+    try {
+      await addRecipe({
+        type: 'custom',
+        name: name.trim(),
+        ingredients: ingredients.split('\n').map((s) => s.trim()).filter(Boolean),
+        instructions: instructions.trim(),
+        imageUrl: imageUrl.trim() || undefined,
+      })
+      router.push(`/cookbooks/${id}`)
+    } catch {
+      setSubmitError('Failed to add recipe. Try again.')
+      setSubmitting(false)
+    }
   }, [addRecipe, id, router, name, ingredients, instructions, imageUrl])
 
   if (authLoading || !user) return null
@@ -157,7 +171,7 @@ export default function AddRecipePage() {
 
             {!searching && searched && results.length === 0 && (
               <p className="py-12 text-center text-sm text-muted-foreground">
-                No meals found
+                {searchError ? 'Search failed. Check your connection.' : 'No meals found'}
               </p>
             )}
 
@@ -251,6 +265,10 @@ export default function AddRecipePage() {
                 className="w-full rounded-xl border border-foreground/10 bg-card px-4 py-3 text-sm text-foreground placeholder-muted-foreground outline-none transition-colors focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20"
               />
             </div>
+
+            {submitError && (
+              <p className="text-sm text-red-400">{submitError}</p>
+            )}
 
             <button
               type="submit"

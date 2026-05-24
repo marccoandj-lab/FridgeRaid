@@ -15,7 +15,7 @@ interface CookbookRecipeCardProps {
 }
 
 export function CookbookRecipeCard({ recipe, isLiked, currentUserId, onLike, onDelete, index = 0 }: CookbookRecipeCardProps) {
-  const displayName = recipe.type === "meal" ? recipe.strMeal! : recipe.name!;
+  const displayName = recipe.type === "meal" ? (recipe.strMeal || "Untitled") : (recipe.name || "Untitled");
   const thumbnail = recipe.type === "meal" ? recipe.strMealThumb : recipe.imageUrl;
   const canDelete = recipe.addedBy === currentUserId;
 
