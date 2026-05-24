@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef, useMemo } from 'react'
+import { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { ArrowLeft, Check, ExternalLink, Film, ChefHat, UtensilsCrossed, Minus, Plus, CookingPot, Maximize2, Minimize2, ChevronLeft, ChevronRight, Star, CalendarDays } from 'lucide-react'
@@ -36,6 +36,7 @@ export default function RecipeDetailPage() {
   const [cookMode, setCookMode] = useState(false)
   const [currentStep, setCurrentStep] = useState(0)
   const [cooked, setCooked] = useState(false)
+  const [heroImgError, setHeroImgError] = useState(false)
   const wakeLockRef = useRef<WakeLockSentinel | null>(null)
   const touchStartRef = useRef(0)
   const { currentRating, setRating } = useRecipeRating(id)
@@ -270,6 +271,11 @@ export default function RecipeDetailPage() {
         className="relative mb-6 overflow-hidden rounded-2xl sm:mb-10"
       >
         <div className="relative aspect-[4/3] sm:aspect-[3/1]">
+          {heroImgError ? (
+            <div className="flex h-full w-full items-center justify-center bg-amber-900/20 text-6xl">
+              🍽️
+            </div>
+          ) : (
           <Image
             src={meal.strMealThumb}
             alt={meal.strMeal}
@@ -279,7 +285,9 @@ export default function RecipeDetailPage() {
             priority
             placeholder="blur"
             blurDataURL="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Crect width='1' height='1' fill='%231a1a1a'/%3E%3C/svg%3E"
+            onError={() => setHeroImgError(true)}
           />
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-8">
             <div className="mb-2 flex flex-wrap gap-2 sm:mb-3">

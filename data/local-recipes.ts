@@ -106,7 +106,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-3",
     strMeal: "Special Lamb Dish 3",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/04axct1763793018.jpg",
     strCategory: "Lamb",
     strArea: "Chinese",
     strInstructions: "1. Prepare all ingredients for Lamb dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -157,7 +157,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-4",
     strMeal: "Special Miscellaneous Dish 4",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/uuyrrx1487327597.jpg",
     strCategory: "Miscellaneous",
     strArea: "Croatian",
     strInstructions: "1. Prepare all ingredients for Miscellaneous dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -208,7 +208,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-5",
     strMeal: "Special Pasta Dish 5",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/usywpp1511189717.jpg",
     strCategory: "Pasta",
     strArea: "Dutch",
     strInstructions: "1. Prepare all ingredients for Pasta dish. 2. Cook Pasta in a pan. 3. Add Spaghetti and Penne. 4. Season with salt and pepper. 5. Serve hot.",
@@ -259,7 +259,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-6",
     strMeal: "Special Pork Dish 6",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/qt4i0n1763256454.jpg",
     strCategory: "Pork",
     strArea: "Egyptian",
     strInstructions: "1. Prepare all ingredients for Pork dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -310,7 +310,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-7",
     strMeal: "Special Seafood Dish 7",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/p02vq41763754350.jpg",
     strCategory: "Seafood",
     strArea: "French",
     strInstructions: "1. Prepare all ingredients for Seafood dish. 2. Cook Salmon in a pan. 3. Add Shrimp and Fish Fillet. 4. Season with salt and pepper. 5. Serve hot.",
@@ -361,7 +361,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-8",
     strMeal: "Special Side Dish 8",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/gpon5u1763801180.jpg",
     strCategory: "Side",
     strArea: "Greek",
     strInstructions: "1. Prepare all ingredients for Side dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -412,7 +412,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-9",
     strMeal: "Special Starter Dish 9",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/5jdtie1763289302.jpg",
     strCategory: "Starter",
     strArea: "Indian",
     strInstructions: "1. Prepare all ingredients for Starter dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -463,7 +463,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-10",
     strMeal: "Special Vegan Dish 10",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/lvn2d51598732465.jpg",
     strCategory: "Vegan",
     strArea: "Irish",
     strInstructions: "1. Prepare all ingredients for Vegan dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -514,7 +514,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-11",
     strMeal: "Special Vegetarian Dish 11",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/walmi81779552709.jpg",
     strCategory: "Vegetarian",
     strArea: "Italian",
     strInstructions: "1. Prepare all ingredients for Vegetarian dish. 2. Cook Lentils in a pan. 3. Add Chickpeas and Tofu. 4. Season with salt and pepper. 5. Serve hot.",
@@ -565,7 +565,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-12",
     strMeal: "Special Breakfast Dish 12",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/utxryw1511721587.jpg",
     strCategory: "Breakfast",
     strArea: "Jamaican",
     strInstructions: "1. Prepare all ingredients for Breakfast dish. 2. Cook Eggs in a pan. 3. Add Bacon and Bread. 4. Season with salt and pepper. 5. Serve hot.",
@@ -616,7 +616,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-13",
     strMeal: "Special Goat Dish 13",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/8xuvhj1763794991.jpg",
     strCategory: "Goat",
     strArea: "Japanese",
     strInstructions: "1. Prepare all ingredients for Goat dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -667,7 +667,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-14",
     strMeal: "Special Beef Dish 14",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/o2wb6p1581005243.jpg",
     strCategory: "Beef",
     strArea: "Kenyan",
     strInstructions: "1. Prepare all ingredients for Beef dish. 2. Cook Beef in a pan. 3. Add Steak and Minced Beef. 4. Season with salt and pepper. 5. Serve hot.",
@@ -718,7 +718,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-15",
     strMeal: "Special Chicken Dish 15",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/020z181619788503.jpg",
     strCategory: "Chicken",
     strArea: "Malaysian",
     strInstructions: "1. Prepare all ingredients for Chicken dish. 2. Cook Chicken in a pan. 3. Add Chicken Breast and Chicken Thighs. 4. Season with salt and pepper. 5. Serve hot.",
@@ -769,7 +769,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-16",
     strMeal: "Special Dessert Dish 16",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/yh3sg71763741307.jpg",
     strCategory: "Dessert",
     strArea: "Mexican",
     strInstructions: "1. Prepare all ingredients for Dessert dish. 2. Cook Sugar in a pan. 3. Add Flour and Butter. 4. Season with salt and pepper. 5. Serve hot.",
@@ -820,7 +820,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-17",
     strMeal: "Special Lamb Dish 17",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/vssrtx1511557680.jpg",
     strCategory: "Lamb",
     strArea: "Moroccan",
     strInstructions: "1. Prepare all ingredients for Lamb dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -871,7 +871,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-18",
     strMeal: "Special Miscellaneous Dish 18",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/vxuyrx1511302687.jpg",
     strCategory: "Miscellaneous",
     strArea: "Polish",
     strInstructions: "1. Prepare all ingredients for Miscellaneous dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -922,7 +922,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-19",
     strMeal: "Special Pasta Dish 19",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/wspuvp1511303478.jpg",
     strCategory: "Pasta",
     strArea: "Portuguese",
     strInstructions: "1. Prepare all ingredients for Pasta dish. 2. Cook Pasta in a pan. 3. Add Spaghetti and Penne. 4. Season with salt and pepper. 5. Serve hot.",
@@ -973,7 +973,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-20",
     strMeal: "Special Pork Dish 20",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/tzsy461763769901.jpg",
     strCategory: "Pork",
     strArea: "Russian",
     strInstructions: "1. Prepare all ingredients for Pork dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -1024,7 +1024,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-21",
     strMeal: "Special Seafood Dish 21",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/jc6oub1763196663.jpg",
     strCategory: "Seafood",
     strArea: "Spanish",
     strInstructions: "1. Prepare all ingredients for Seafood dish. 2. Cook Salmon in a pan. 3. Add Shrimp and Fish Fillet. 4. Season with salt and pepper. 5. Serve hot.",
@@ -1075,7 +1075,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-22",
     strMeal: "Special Side Dish 22",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/zjtfp31764440795.jpg",
     strCategory: "Side",
     strArea: "Thai",
     strInstructions: "1. Prepare all ingredients for Side dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -1126,7 +1126,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-23",
     strMeal: "Special Starter Dish 23",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/tvvxpv1511191952.jpg",
     strCategory: "Starter",
     strArea: "Tunisian",
     strInstructions: "1. Prepare all ingredients for Starter dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -1177,7 +1177,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-24",
     strMeal: "Special Vegan Dish 24",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/wuxrtu1483564410.jpg",
     strCategory: "Vegan",
     strArea: "Turkish",
     strInstructions: "1. Prepare all ingredients for Vegan dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -1228,7 +1228,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-25",
     strMeal: "Special Vegetarian Dish 25",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/xxpqsy1511452222.jpg",
     strCategory: "Vegetarian",
     strArea: "Vietnamese",
     strInstructions: "1. Prepare all ingredients for Vegetarian dish. 2. Cook Lentils in a pan. 3. Add Chickpeas and Tofu. 4. Season with salt and pepper. 5. Serve hot.",
@@ -1279,7 +1279,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-26",
     strMeal: "Special Breakfast Dish 26",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/30s7vf1763741844.jpg",
     strCategory: "Breakfast",
     strArea: "American",
     strInstructions: "1. Prepare all ingredients for Breakfast dish. 2. Cook Eggs in a pan. 3. Add Bacon and Bread. 4. Season with salt and pepper. 5. Serve hot.",
@@ -1330,7 +1330,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-27",
     strMeal: "Special Goat Dish 27",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/04axct1763793018.jpg",
     strCategory: "Goat",
     strArea: "British",
     strInstructions: "1. Prepare all ingredients for Goat dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -1381,7 +1381,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-28",
     strMeal: "Special Beef Dish 28",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/8rfd4q1764112993.jpg",
     strCategory: "Beef",
     strArea: "Canadian",
     strInstructions: "1. Prepare all ingredients for Beef dish. 2. Cook Beef in a pan. 3. Add Steak and Minced Beef. 4. Season with salt and pepper. 5. Serve hot.",
@@ -1432,7 +1432,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-29",
     strMeal: "Special Chicken Dish 29",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/sypxpx1515365095.jpg",
     strCategory: "Chicken",
     strArea: "Chinese",
     strInstructions: "1. Prepare all ingredients for Chicken dish. 2. Cook Chicken in a pan. 3. Add Chicken Breast and Chicken Thighs. 4. Season with salt and pepper. 5. Serve hot.",
@@ -1483,7 +1483,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-30",
     strMeal: "Special Dessert Dish 30",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/jyjlhj1763075323.jpg",
     strCategory: "Dessert",
     strArea: "Croatian",
     strInstructions: "1. Prepare all ingredients for Dessert dish. 2. Cook Sugar in a pan. 3. Add Flour and Butter. 4. Season with salt and pepper. 5. Serve hot.",
@@ -1534,7 +1534,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-31",
     strMeal: "Special Lamb Dish 31",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/8xuvhj1763794991.jpg",
     strCategory: "Lamb",
     strArea: "Dutch",
     strInstructions: "1. Prepare all ingredients for Lamb dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -1585,7 +1585,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-32",
     strMeal: "Special Miscellaneous Dish 32",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/ussyxw1515364536.jpg",
     strCategory: "Miscellaneous",
     strArea: "Egyptian",
     strInstructions: "1. Prepare all ingredients for Miscellaneous dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -1687,7 +1687,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-34",
     strMeal: "Special Pork Dish 34",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/atd5sh1583188467.jpg",
     strCategory: "Pork",
     strArea: "Greek",
     strInstructions: "1. Prepare all ingredients for Pork dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -1738,7 +1738,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-35",
     strMeal: "Special Seafood Dish 35",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/cp74zo1762341241.jpg",
     strCategory: "Seafood",
     strArea: "Indian",
     strInstructions: "1. Prepare all ingredients for Seafood dish. 2. Cook Salmon in a pan. 3. Add Shrimp and Fish Fillet. 4. Season with salt and pepper. 5. Serve hot.",
@@ -1789,7 +1789,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-36",
     strMeal: "Special Side Dish 36",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/0umm891763364625.jpg",
     strCategory: "Side",
     strArea: "Irish",
     strInstructions: "1. Prepare all ingredients for Side dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -1840,7 +1840,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-37",
     strMeal: "Special Starter Dish 37",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/rvtvuw1511190488.jpg",
     strCategory: "Starter",
     strArea: "Italian",
     strInstructions: "1. Prepare all ingredients for Starter dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -1891,7 +1891,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-38",
     strMeal: "Special Vegan Dish 38",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/60oc3k1699009846.jpg",
     strCategory: "Vegan",
     strArea: "Jamaican",
     strInstructions: "1. Prepare all ingredients for Vegan dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -1942,7 +1942,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-39",
     strMeal: "Special Vegetarian Dish 39",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/1oz4nb1765687990.jpg",
     strCategory: "Vegetarian",
     strArea: "Japanese",
     strInstructions: "1. Prepare all ingredients for Vegetarian dish. 2. Cook Lentils in a pan. 3. Add Chickpeas and Tofu. 4. Season with salt and pepper. 5. Serve hot.",
@@ -1993,7 +1993,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-40",
     strMeal: "Special Breakfast Dish 40",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/hqaejl1695738653.jpg",
     strCategory: "Breakfast",
     strArea: "Kenyan",
     strInstructions: "1. Prepare all ingredients for Breakfast dish. 2. Cook Eggs in a pan. 3. Add Bacon and Bread. 4. Season with salt and pepper. 5. Serve hot.",
@@ -2044,7 +2044,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-41",
     strMeal: "Special Goat Dish 41",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/kgfh3q1763075438.jpg",
     strCategory: "Goat",
     strArea: "Malaysian",
     strInstructions: "1. Prepare all ingredients for Goat dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -2095,7 +2095,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-42",
     strMeal: "Special Beef Dish 42",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/13fg4j1764441982.jpg",
     strCategory: "Beef",
     strArea: "Mexican",
     strInstructions: "1. Prepare all ingredients for Beef dish. 2. Cook Beef in a pan. 3. Add Steak and Minced Beef. 4. Season with salt and pepper. 5. Serve hot.",
@@ -2146,7 +2146,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-43",
     strMeal: "Special Chicken Dish 43",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/sbx7n71587673021.jpg",
     strCategory: "Chicken",
     strArea: "Moroccan",
     strInstructions: "1. Prepare all ingredients for Chicken dish. 2. Cook Chicken in a pan. 3. Add Chicken Breast and Chicken Thighs. 4. Season with salt and pepper. 5. Serve hot.",
@@ -2197,7 +2197,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-44",
     strMeal: "Special Dessert Dish 44",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/ssxvup1511387476.jpg",
     strCategory: "Dessert",
     strArea: "Polish",
     strInstructions: "1. Prepare all ingredients for Dessert dish. 2. Cook Sugar in a pan. 3. Add Flour and Butter. 4. Season with salt and pepper. 5. Serve hot.",
@@ -2248,7 +2248,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-45",
     strMeal: "Special Lamb Dish 45",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/p9tebp1764118792.jpg",
     strCategory: "Lamb",
     strArea: "Portuguese",
     strInstructions: "1. Prepare all ingredients for Lamb dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -2299,7 +2299,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-46",
     strMeal: "Special Miscellaneous Dish 46",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/gpz67p1560458984.jpg",
     strCategory: "Miscellaneous",
     strArea: "Russian",
     strInstructions: "1. Prepare all ingredients for Miscellaneous dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -2350,7 +2350,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-47",
     strMeal: "Special Pasta Dish 47",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/usywpp1511189717.jpg",
     strCategory: "Pasta",
     strArea: "Spanish",
     strInstructions: "1. Prepare all ingredients for Pasta dish. 2. Cook Pasta in a pan. 3. Add Spaghetti and Penne. 4. Season with salt and pepper. 5. Serve hot.",
@@ -2401,7 +2401,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-48",
     strMeal: "Special Pork Dish 48",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/md8w601593348504.jpg",
     strCategory: "Pork",
     strArea: "Thai",
     strInstructions: "1. Prepare all ingredients for Pork dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -2452,7 +2452,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-49",
     strMeal: "Special Seafood Dish 49",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/l50vz41763422681.jpg",
     strCategory: "Seafood",
     strArea: "Tunisian",
     strInstructions: "1. Prepare all ingredients for Seafood dish. 2. Cook Salmon in a pan. 3. Add Shrimp and Fish Fillet. 4. Season with salt and pepper. 5. Serve hot.",
@@ -2503,7 +2503,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-50",
     strMeal: "Special Side Dish 50",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/1ngcbf1628770793.jpg",
     strCategory: "Side",
     strArea: "Turkish",
     strInstructions: "1. Prepare all ingredients for Side dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -2554,7 +2554,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-51",
     strMeal: "Special Starter Dish 51",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/wurrux1468416624.jpg",
     strCategory: "Starter",
     strArea: "Vietnamese",
     strInstructions: "1. Prepare all ingredients for Starter dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -2605,7 +2605,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-52",
     strMeal: "Special Vegan Dish 52",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/c7lzrl1683208757.jpg",
     strCategory: "Vegan",
     strArea: "American",
     strInstructions: "1. Prepare all ingredients for Vegan dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -2656,7 +2656,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-53",
     strMeal: "Special Vegetarian Dish 53",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/tvtxpq1511464705.jpg",
     strCategory: "Vegetarian",
     strArea: "British",
     strInstructions: "1. Prepare all ingredients for Vegetarian dish. 2. Cook Lentils in a pan. 3. Add Chickpeas and Tofu. 4. Season with salt and pepper. 5. Serve hot.",
@@ -2707,7 +2707,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-54",
     strMeal: "Special Breakfast Dish 54",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/1550441882.jpg",
     strCategory: "Breakfast",
     strArea: "Canadian",
     strInstructions: "1. Prepare all ingredients for Breakfast dish. 2. Cook Eggs in a pan. 3. Add Bacon and Bread. 4. Season with salt and pepper. 5. Serve hot.",
@@ -2758,7 +2758,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-55",
     strMeal: "Special Goat Dish 55",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/44bzep1761848278.jpg",
     strCategory: "Goat",
     strArea: "Chinese",
     strInstructions: "1. Prepare all ingredients for Goat dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -2809,7 +2809,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-56",
     strMeal: "Special Beef Dish 56",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/jgl9qq1764437635.jpg",
     strCategory: "Beef",
     strArea: "Croatian",
     strInstructions: "1. Prepare all ingredients for Beef dish. 2. Cook Beef in a pan. 3. Add Steak and Minced Beef. 4. Season with salt and pepper. 5. Serve hot.",
@@ -2860,7 +2860,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-57",
     strMeal: "Special Chicken Dish 57",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/fk80jp1763280767.jpg",
     strCategory: "Chicken",
     strArea: "Dutch",
     strInstructions: "1. Prepare all ingredients for Chicken dish. 2. Cook Chicken in a pan. 3. Add Chicken Breast and Chicken Thighs. 4. Season with salt and pepper. 5. Serve hot.",
@@ -2911,7 +2911,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-58",
     strMeal: "Special Dessert Dish 58",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/ytme8t1764111401.jpg",
     strCategory: "Dessert",
     strArea: "Egyptian",
     strInstructions: "1. Prepare all ingredients for Dessert dish. 2. Cook Sugar in a pan. 3. Add Flour and Butter. 4. Season with salt and pepper. 5. Serve hot.",
@@ -2962,7 +2962,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-59",
     strMeal: "Special Lamb Dish 59",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/04axct1763793018.jpg",
     strCategory: "Lamb",
     strArea: "French",
     strInstructions: "1. Prepare all ingredients for Lamb dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -3013,7 +3013,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-60",
     strMeal: "Special Miscellaneous Dish 60",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpvsu1511786158.jpg",
     strCategory: "Miscellaneous",
     strArea: "Greek",
     strInstructions: "1. Prepare all ingredients for Miscellaneous dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -3064,7 +3064,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-61",
     strMeal: "Special Pasta Dish 61",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/wspuvp1511303478.jpg",
     strCategory: "Pasta",
     strArea: "Indian",
     strInstructions: "1. Prepare all ingredients for Pasta dish. 2. Cook Pasta in a pan. 3. Add Spaghetti and Penne. 4. Season with salt and pepper. 5. Serve hot.",
@@ -3115,7 +3115,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-62",
     strMeal: "Special Pork Dish 62",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/naqyel1608588563.jpg",
     strCategory: "Pork",
     strArea: "Irish",
     strInstructions: "1. Prepare all ingredients for Pork dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -3166,7 +3166,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-63",
     strMeal: "Special Seafood Dish 63",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/1548772327.jpg",
     strCategory: "Seafood",
     strArea: "Italian",
     strInstructions: "1. Prepare all ingredients for Seafood dish. 2. Cook Salmon in a pan. 3. Add Shrimp and Fish Fillet. 4. Season with salt and pepper. 5. Serve hot.",
@@ -3217,7 +3217,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-64",
     strMeal: "Special Side Dish 64",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/grhn401765687086.jpg",
     strCategory: "Side",
     strArea: "Jamaican",
     strInstructions: "1. Prepare all ingredients for Side dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -3268,7 +3268,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-65",
     strMeal: "Special Starter Dish 65",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/stpuws1511191310.jpg",
     strCategory: "Starter",
     strArea: "Japanese",
     strInstructions: "1. Prepare all ingredients for Starter dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -3319,7 +3319,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-66",
     strMeal: "Special Vegan Dish 66",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/ei21r61764365935.jpg",
     strCategory: "Vegan",
     strArea: "Kenyan",
     strInstructions: "1. Prepare all ingredients for Vegan dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -3370,7 +3370,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-67",
     strMeal: "Special Vegetarian Dish 67",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/rwvw8q1765660071.jpg",
     strCategory: "Vegetarian",
     strArea: "Malaysian",
     strInstructions: "1. Prepare all ingredients for Vegetarian dish. 2. Cook Lentils in a pan. 3. Add Chickpeas and Tofu. 4. Season with salt and pepper. 5. Serve hot.",
@@ -3421,7 +3421,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-68",
     strMeal: "Special Breakfast Dish 68",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/oaqz9f1766593912.jpg",
     strCategory: "Breakfast",
     strArea: "Mexican",
     strInstructions: "1. Prepare all ingredients for Breakfast dish. 2. Cook Eggs in a pan. 3. Add Bacon and Bread. 4. Season with salt and pepper. 5. Serve hot.",
@@ -3472,7 +3472,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-69",
     strMeal: "Special Goat Dish 69",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/urzj1d1587670726.jpg",
     strCategory: "Goat",
     strArea: "Moroccan",
     strInstructions: "1. Prepare all ingredients for Goat dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -3523,7 +3523,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-70",
     strMeal: "Special Beef Dish 70",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/m0p0j81765568742.jpg",
     strCategory: "Beef",
     strArea: "Polish",
     strInstructions: "1. Prepare all ingredients for Beef dish. 2. Cook Beef in a pan. 3. Add Steak and Minced Beef. 4. Season with salt and pepper. 5. Serve hot.",
@@ -3574,7 +3574,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-71",
     strMeal: "Special Chicken Dish 71",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/uuuspp1511297945.jpg",
     strCategory: "Chicken",
     strArea: "Portuguese",
     strInstructions: "1. Prepare all ingredients for Chicken dish. 2. Cook Chicken in a pan. 3. Add Chicken Breast and Chicken Thighs. 4. Season with salt and pepper. 5. Serve hot.",
@@ -3625,7 +3625,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-72",
     strMeal: "Special Dessert Dish 72",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/a4kgf21763075288.jpg",
     strCategory: "Dessert",
     strArea: "Russian",
     strInstructions: "1. Prepare all ingredients for Dessert dish. 2. Cook Sugar in a pan. 3. Add Flour and Butter. 4. Season with salt and pepper. 5. Serve hot.",
@@ -3676,7 +3676,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-73",
     strMeal: "Special Lamb Dish 73",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/vssrtx1511557680.jpg",
     strCategory: "Lamb",
     strArea: "Spanish",
     strInstructions: "1. Prepare all ingredients for Lamb dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -3727,7 +3727,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-74",
     strMeal: "Special Miscellaneous Dish 74",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/uuyrrx1487327597.jpg",
     strCategory: "Miscellaneous",
     strArea: "Thai",
     strInstructions: "1. Prepare all ingredients for Miscellaneous dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -3829,7 +3829,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-76",
     strMeal: "Special Pork Dish 76",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/g33c901763365484.jpg",
     strCategory: "Pork",
     strArea: "Turkish",
     strInstructions: "1. Prepare all ingredients for Pork dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -3880,7 +3880,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-77",
     strMeal: "Special Seafood Dish 77",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/4xcfai1763765676.jpg",
     strCategory: "Seafood",
     strArea: "Vietnamese",
     strInstructions: "1. Prepare all ingredients for Seafood dish. 2. Cook Salmon in a pan. 3. Add Shrimp and Fish Fillet. 4. Season with salt and pepper. 5. Serve hot.",
@@ -3931,7 +3931,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-78",
     strMeal: "Special Side Dish 78",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/se5vhk1764114880.jpg",
     strCategory: "Side",
     strArea: "American",
     strInstructions: "1. Prepare all ingredients for Side dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -3982,7 +3982,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-79",
     strMeal: "Special Starter Dish 79",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/5jdtie1763289302.jpg",
     strCategory: "Starter",
     strArea: "British",
     strInstructions: "1. Prepare all ingredients for Starter dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -4033,7 +4033,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-80",
     strMeal: "Special Vegan Dish 80",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/lvn2d51598732465.jpg",
     strCategory: "Vegan",
     strArea: "Canadian",
     strInstructions: "1. Prepare all ingredients for Vegan dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -4084,7 +4084,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-81",
     strMeal: "Special Vegetarian Dish 81",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/urtpqw1487341253.jpg",
     strCategory: "Vegetarian",
     strArea: "Chinese",
     strInstructions: "1. Prepare all ingredients for Vegetarian dish. 2. Cook Lentils in a pan. 3. Add Chickpeas and Tofu. 4. Season with salt and pepper. 5. Serve hot.",
@@ -4135,7 +4135,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-82",
     strMeal: "Special Breakfast Dish 82",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/utxryw1511721587.jpg",
     strCategory: "Breakfast",
     strArea: "Croatian",
     strInstructions: "1. Prepare all ingredients for Breakfast dish. 2. Cook Eggs in a pan. 3. Add Bacon and Bread. 4. Season with salt and pepper. 5. Serve hot.",
@@ -4186,7 +4186,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-83",
     strMeal: "Special Goat Dish 83",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/8xuvhj1763794991.jpg",
     strCategory: "Goat",
     strArea: "Dutch",
     strInstructions: "1. Prepare all ingredients for Goat dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -4237,7 +4237,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-84",
     strMeal: "Special Beef Dish 84",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg",
     strCategory: "Beef",
     strArea: "Egyptian",
     strInstructions: "1. Prepare all ingredients for Beef dish. 2. Cook Beef in a pan. 3. Add Steak and Minced Beef. 4. Season with salt and pepper. 5. Serve hot.",
@@ -4288,7 +4288,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-85",
     strMeal: "Special Chicken Dish 85",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/wruvqv1511880994.jpg",
     strCategory: "Chicken",
     strArea: "French",
     strInstructions: "1. Prepare all ingredients for Chicken dish. 2. Cook Chicken in a pan. 3. Add Chicken Breast and Chicken Thighs. 4. Season with salt and pepper. 5. Serve hot.",
@@ -4339,7 +4339,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-86",
     strMeal: "Special Dessert Dish 86",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/q47rkb1762324620.jpg",
     strCategory: "Dessert",
     strArea: "Greek",
     strInstructions: "1. Prepare all ingredients for Dessert dish. 2. Cook Sugar in a pan. 3. Add Flour and Butter. 4. Season with salt and pepper. 5. Serve hot.",
@@ -4390,7 +4390,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-87",
     strMeal: "Special Lamb Dish 87",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/8xuvhj1763794991.jpg",
     strCategory: "Lamb",
     strArea: "Indian",
     strInstructions: "1. Prepare all ingredients for Lamb dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -4441,7 +4441,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-88",
     strMeal: "Special Miscellaneous Dish 88",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/vxuyrx1511302687.jpg",
     strCategory: "Miscellaneous",
     strArea: "Irish",
     strInstructions: "1. Prepare all ingredients for Miscellaneous dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -4492,7 +4492,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-89",
     strMeal: "Special Pasta Dish 89",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/usywpp1511189717.jpg",
     strCategory: "Pasta",
     strArea: "Italian",
     strInstructions: "1. Prepare all ingredients for Pasta dish. 2. Cook Pasta in a pan. 3. Add Spaghetti and Penne. 4. Season with salt and pepper. 5. Serve hot.",
@@ -4543,7 +4543,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-90",
     strMeal: "Special Pork Dish 90",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/xvnx8j1763287209.jpg",
     strCategory: "Pork",
     strArea: "Jamaican",
     strInstructions: "1. Prepare all ingredients for Pork dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -4594,7 +4594,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-91",
     strMeal: "Special Seafood Dish 91",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/4o4wh11761848573.jpg",
     strCategory: "Seafood",
     strArea: "Japanese",
     strInstructions: "1. Prepare all ingredients for Seafood dish. 2. Cook Salmon in a pan. 3. Add Shrimp and Fish Fillet. 4. Season with salt and pepper. 5. Serve hot.",
@@ -4645,7 +4645,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-92",
     strMeal: "Special Side Dish 92",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/o2cd4r1764113576.jpg",
     strCategory: "Side",
     strArea: "Kenyan",
     strInstructions: "1. Prepare all ingredients for Side dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -4696,7 +4696,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-93",
     strMeal: "Special Starter Dish 93",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/tvvxpv1511191952.jpg",
     strCategory: "Starter",
     strArea: "Malaysian",
     strInstructions: "1. Prepare all ingredients for Starter dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -4747,7 +4747,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-94",
     strMeal: "Special Vegan Dish 94",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/wuxrtu1483564410.jpg",
     strCategory: "Vegan",
     strArea: "Mexican",
     strInstructions: "1. Prepare all ingredients for Vegan dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -4798,7 +4798,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-95",
     strMeal: "Special Vegetarian Dish 95",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/ra2k8a1764365055.jpg",
     strCategory: "Vegetarian",
     strArea: "Moroccan",
     strInstructions: "1. Prepare all ingredients for Vegetarian dish. 2. Cook Lentils in a pan. 3. Add Chickpeas and Tofu. 4. Season with salt and pepper. 5. Serve hot.",
@@ -4849,7 +4849,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-96",
     strMeal: "Special Breakfast Dish 96",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/30s7vf1763741844.jpg",
     strCategory: "Breakfast",
     strArea: "Polish",
     strInstructions: "1. Prepare all ingredients for Breakfast dish. 2. Cook Eggs in a pan. 3. Add Bacon and Bread. 4. Season with salt and pepper. 5. Serve hot.",
@@ -4900,7 +4900,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-97",
     strMeal: "Special Goat Dish 97",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/04axct1763793018.jpg",
     strCategory: "Goat",
     strArea: "Portuguese",
     strInstructions: "1. Prepare all ingredients for Goat dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -4951,7 +4951,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-98",
     strMeal: "Special Beef Dish 98",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/wrssvt1511556563.jpg",
     strCategory: "Beef",
     strArea: "Russian",
     strInstructions: "1. Prepare all ingredients for Beef dish. 2. Cook Beef in a pan. 3. Add Steak and Minced Beef. 4. Season with salt and pepper. 5. Serve hot.",
@@ -5002,7 +5002,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-99",
     strMeal: "Special Chicken Dish 99",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/qxytrx1511304021.jpg",
     strCategory: "Chicken",
     strArea: "Spanish",
     strInstructions: "1. Prepare all ingredients for Chicken dish. 2. Cook Chicken in a pan. 3. Add Chicken Breast and Chicken Thighs. 4. Season with salt and pepper. 5. Serve hot.",
@@ -5053,7 +5053,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-100",
     strMeal: "Special Dessert Dish 100",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg",
     strCategory: "Dessert",
     strArea: "Thai",
     strInstructions: "1. Prepare all ingredients for Dessert dish. 2. Cook Sugar in a pan. 3. Add Flour and Butter. 4. Season with salt and pepper. 5. Serve hot.",
@@ -5104,7 +5104,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-101",
     strMeal: "Special Lamb Dish 101",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/p9tebp1764118792.jpg",
     strCategory: "Lamb",
     strArea: "Tunisian",
     strInstructions: "1. Prepare all ingredients for Lamb dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
@@ -5155,7 +5155,7 @@ export const LOCAL_MEALS: MealDetail[] = [
   {
     idMeal: "local-102",
     strMeal: "Special Miscellaneous Dish 102",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wvpsrt1468256358.jpg",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/ussyxw1515364536.jpg",
     strCategory: "Miscellaneous",
     strArea: "Turkish",
     strInstructions: "1. Prepare all ingredients for Miscellaneous dish. 2. Cook Salt in a pan. 3. Add Pepper and Oil. 4. Season with salt and pepper. 5. Serve hot.",
