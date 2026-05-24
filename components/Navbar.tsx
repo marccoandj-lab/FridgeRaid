@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Heart, IceCream, Compass, User, LayoutList, BookOpen, Refrigerator, ShoppingCart, CalendarDays } from 'lucide-react'
+import { Heart, IceCream, Compass, User, LayoutList, BookOpen, CalendarDays } from 'lucide-react'
 import { useFavorites } from '@/hooks/useFavorites'
 import { useAuth } from '@/lib/AuthProvider'
 import { cn } from '@/lib/utils'
@@ -52,24 +52,6 @@ export function Navbar() {
                 {favorites.length}
               </span>
             )}
-          </Link>
-          <Link
-            href="/pantry"
-            className={cn(
-              'flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground',
-            )}
-          >
-            <Refrigerator size={18} />
-            <span className="hidden sm:inline">Pantry</span>
-          </Link>
-          <Link
-            href="/shopping-list"
-            className={cn(
-              'flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground',
-            )}
-          >
-            <ShoppingCart size={18} />
-            <span className="hidden sm:inline">Shopping</span>
           </Link>
           <Link
             href="/meal-plan"

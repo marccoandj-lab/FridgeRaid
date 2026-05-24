@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Sparkles, Compass, Bookmark, X, AlertTriangle, Sun } from 'lucide-react'
+import { Sparkles, Compass, Bookmark, X, Sun } from 'lucide-react'
 import { IngredientInput } from '@/components/IngredientInput'
 import { RecipeGrid } from '@/components/RecipeGrid'
 import { SurpriseMeButton } from '@/components/SurpriseMeButton'
@@ -16,7 +16,6 @@ import { useDailyMeals } from '@/hooks/useDailyMeals'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useAuth } from '@/lib/AuthProvider'
 import { auth } from '@/lib/firebase'
-import { usePantry } from '@/hooks/usePantry'
 import { useSavedSearches } from '@/hooks/useSavedSearches'
 import { getCurrentSeasonalIngredients } from '@/data/seasonal'
 
@@ -26,11 +25,9 @@ export default function HomePage() {
   const { ingredients, addIngredient, clearAll } = useIngredients()
   const { meals, isLoading, isLoadingMore, error, hasMore, loadMore } = useMealSearch(ingredients)
   const { meals: dailyMeals, isLoading: dailyLoading } = useDailyMeals()
-  const { expiringItems } = usePantry()
   const { searches, saveSearch, deleteSearch } = useSavedSearches()
   const [showSaveSearch, setShowSaveSearch] = useState(false)
   const [searchName, setSearchName] = useState('')
-  const expiring = expiringItems(3)
   const seasonal = getCurrentSeasonalIngredients()
 
   useEffect(() => {
@@ -146,23 +143,6 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      )}
-
-      {/* Use it up */}
-      {expiring.length > 0 && (
-        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mb-4 sm:mb-6">
-          <Link
-            href="/pantry"
-            className="flex items-center gap-3 rounded-2xl border border-amber-500/20 bg-amber-500/5 px-4 py-3 transition-all hover:bg-amber-500/10 active:scale-[0.98]"
-          >
-            <AlertTriangle size={18} className="text-amber-400" />
-            <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-amber-300">{expiring.length} item{expiring.length !== 1 ? 's' : ''} expiring soon</p>
-              <p className="text-xs text-muted-foreground">Check your pantry and use them up</p>
-            </div>
-            <span className="text-xs text-amber-500">&rarr;</span>
-          </Link>
-        </motion.div>
       )}
 
       {/* Seasonal */}
