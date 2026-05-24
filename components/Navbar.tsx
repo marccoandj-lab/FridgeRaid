@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Heart, IceCream, Compass, User, LayoutList } from 'lucide-react'
+import { Heart, IceCream, Compass, User, LayoutList, BookOpen } from 'lucide-react'
 import { useFavorites } from '@/hooks/useFavorites'
 import { useAuth } from '@/lib/AuthProvider'
 import { cn } from '@/lib/utils'
@@ -52,6 +52,15 @@ export function Navbar() {
                 {favorites.length}
               </span>
             )}
+          </Link>
+          <Link
+            href="/cookbooks"
+            className={cn(
+              'flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground',
+            )}
+          >
+            <BookOpen size={18} />
+            <span className="hidden sm:inline">Cookbooks</span>
           </Link>
           {!isLoading && (
             <Link
