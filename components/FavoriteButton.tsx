@@ -31,7 +31,7 @@ export function FavoriteButton({
       }}
       aria-label={liked ? 'Remove from favorites' : 'Add to favorites'}
       className={cn(
-        'absolute right-2 top-2 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 backdrop-blur-sm transition-colors hover:bg-black/70',
+        'flex h-8 w-8 items-center justify-center rounded-full bg-black/50 backdrop-blur-sm transition-colors hover:bg-black/70',
         className
       )}
     >
