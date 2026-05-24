@@ -27,6 +27,8 @@ export const RecipeCard = memo(function RecipeCard({
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
             className="object-cover transition-all duration-500 group-hover/card:scale-110 group-hover/card:brightness-110"
             loading={priority ? 'eager' : 'lazy'}
+            placeholder="blur"
+            blurDataURL="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Crect width='1' height='1' fill='%231a1a1a'/%3E%3C/svg%3E"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover/card:opacity-100" />
           <div className="absolute right-2 top-2 z-10 flex gap-1.5">

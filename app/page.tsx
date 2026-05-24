@@ -9,11 +9,11 @@ import { Sparkles, Compass } from 'lucide-react'
 import { Navbar } from '@/components/Navbar'
 import { IngredientInput } from '@/components/IngredientInput'
 import { RecipeGrid } from '@/components/RecipeGrid'
+import { SurpriseMeButton } from '@/components/SurpriseMeButton'
 import { useIngredients } from '@/hooks/useIngredients'
 import { useMealSearch } from '@/hooks/useMealSearch'
 import { useDailyMeals } from '@/hooks/useDailyMeals'
 import { Skeleton } from '@/components/ui/skeleton'
-import { cn } from '@/lib/utils'
 import { useAuth } from '@/lib/AuthProvider'
 import { auth } from '@/lib/firebase'
 
@@ -49,12 +49,12 @@ export default function HomePage() {
           </p>
         </motion.section>
 
-        {/* Explore button */}
+        {/* Quick actions */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.05, duration: 0.4 }}
-          className="mb-8"
+          className="mb-8 flex flex-wrap gap-2"
         >
           <Link
             href="/continents"
@@ -63,6 +63,7 @@ export default function HomePage() {
             <Compass size={16} className="text-amber-500" />
             Explore cuisines by continent
           </Link>
+          <SurpriseMeButton meals={meals} ingredients={ingredients} />
         </motion.div>
 
         {/* Food of the Day */}
@@ -98,6 +99,8 @@ export default function HomePage() {
                         fill
                         className="object-cover transition-all duration-500 group-hover:scale-105 group-hover:brightness-110"
                         sizes="(max-width: 640px) 100vw, 33vw"
+                        placeholder="blur"
+                        blurDataURL="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Crect width='1' height='1' fill='%231a1a1a'/%3E%3C/svg%3E"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
                       <div className="absolute bottom-0 left-0 right-0 p-4">

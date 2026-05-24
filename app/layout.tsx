@@ -3,6 +3,7 @@ import { Playfair_Display, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/lib/AuthProvider";
 import { IngredientsProvider } from "@/lib/IngredientsProvider";
+import { PwaInstallPrompt } from "@/components/PwaInstallPrompt";
 
 const playfair = Playfair_Display({
   variable: "--font-heading",
@@ -42,7 +43,10 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <AuthProvider>
-          <IngredientsProvider>{children}</IngredientsProvider>
+          <IngredientsProvider>
+            {children}
+            <PwaInstallPrompt />
+          </IngredientsProvider>
         </AuthProvider>
       </body>
     </html>

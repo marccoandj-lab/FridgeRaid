@@ -121,6 +121,8 @@ export default function RecipeDetailPage() {
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 896px"
               priority
+              placeholder="blur"
+              blurDataURL="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Crect width='1' height='1' fill='%231a1a1a'/%3E%3C/svg%3E"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-r from-background/40 to-transparent" />

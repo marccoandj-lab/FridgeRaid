@@ -1,10 +1,8 @@
 'use client'
 
-import { useState, useCallback, type CSSProperties } from 'react'
+import { useState, useCallback } from 'react'
+import dynamic from 'next/dynamic'
 import { motion, AnimatePresence } from 'framer-motion'
-import {
-  ComposableMap, Geographies, Geography, ZoomableGroup, Marker,
-} from 'react-simple-maps'
 import { ChevronLeft, Globe } from 'lucide-react'
 import { Navbar } from '@/components/Navbar'
 import { RecipeCard } from '@/components/RecipeCard'
@@ -13,53 +11,24 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { CONTINENT_AREAS, fetchMealsByArea } from '@/lib/mealdb'
 import type { MealSummary } from '@/types/meal'
 
-const geoUrl = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json'
+const WorldMap = dynamic(() => import('@/components/WorldMap').then((m) => m.WorldMap), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-[55vh] min-h-[340px] items-center justify-center">
+      <div className="h-8 w-8 animate-spin rounded-full border-2 border-amber-500/30 border-t-amber-500" />
+    </div>
+  ),
+})
 
 const CONTINENTS = Object.keys(CONTINENT_AREAS) as (keyof typeof CONTINENT_AREAS)[]
 
 const CONTINENT_META: Record<string, { color: string; hoverColor: string; labelColor: string; coords: [number, number]; emblem: string }> = {
-  Africa: {
-    color: 'oklch(0.92 0.01 60 / 0.6)',
-    hoverColor: 'oklch(0.72 0.16 65 / 0.5)',
-    labelColor: 'oklch(0.72 0.16 65)',
-    coords: [20, 5],
-    emblem: '🌍',
-  },
-  Asia: {
-    color: 'oklch(0.92 0.01 60 / 0.6)',
-    hoverColor: 'oklch(0.65 0.12 45 / 0.5)',
-    labelColor: 'oklch(0.65 0.12 45)',
-    coords: [90, 35],
-    emblem: '🌏',
-  },
-  Europe: {
-    color: 'oklch(0.92 0.01 60 / 0.6)',
-    hoverColor: 'oklch(0.7 0.1 200 / 0.5)',
-    labelColor: 'oklch(0.7 0.1 200)',
-    coords: [20, 55],
-    emblem: '🌍',
-  },
-  'North America': {
-    color: 'oklch(0.92 0.01 60 / 0.6)',
-    hoverColor: 'oklch(0.68 0.14 30 / 0.5)',
-    labelColor: 'oklch(0.68 0.14 30)',
-    coords: [-100, 40],
-    emblem: '🌎',
-  },
-  'South America': {
-    color: 'oklch(0.92 0.01 60 / 0.6)',
-    hoverColor: 'oklch(0.62 0.13 150 / 0.5)',
-    labelColor: 'oklch(0.62 0.13 150)',
-    coords: [-60, -15],
-    emblem: '🌎',
-  },
-  Oceania: {
-    color: 'oklch(0.92 0.01 60 / 0.6)',
-    hoverColor: 'oklch(0.65 0.1 280 / 0.5)',
-    labelColor: 'oklch(0.65 0.1 280)',
-    coords: [135, -25],
-    emblem: '🌏',
-  },
+  Africa: { color: 'oklch(0.92 0.01 60 / 0.6)', hoverColor: 'oklch(0.72 0.16 65 / 0.5)', labelColor: 'oklch(0.72 0.16 65)', coords: [20, 5], emblem: '🌍' },
+  Asia: { color: 'oklch(0.92 0.01 60 / 0.6)', hoverColor: 'oklch(0.65 0.12 45 / 0.5)', labelColor: 'oklch(0.65 0.12 45)', coords: [90, 35], emblem: '🌏' },
+  Europe: { color: 'oklch(0.92 0.01 60 / 0.6)', hoverColor: 'oklch(0.7 0.1 200 / 0.5)', labelColor: 'oklch(0.7 0.1 200)', coords: [20, 55], emblem: '🌍' },
+  'North America': { color: 'oklch(0.92 0.01 60 / 0.6)', hoverColor: 'oklch(0.68 0.14 30 / 0.5)', labelColor: 'oklch(0.68 0.14 30)', coords: [-100, 40], emblem: '🌎' },
+  'South America': { color: 'oklch(0.92 0.01 60 / 0.6)', hoverColor: 'oklch(0.62 0.13 150 / 0.5)', labelColor: 'oklch(0.62 0.13 150)', coords: [-60, -15], emblem: '🌎' },
+  Oceania: { color: 'oklch(0.92 0.01 60 / 0.6)', hoverColor: 'oklch(0.65 0.1 280 / 0.5)', labelColor: 'oklch(0.65 0.1 280)', coords: [135, -25], emblem: '🌏' },
 }
 
 export default function ContinentsPage() {
@@ -181,100 +150,11 @@ export default function ContinentsPage() {
               className="flex flex-1 flex-col"
             >
               {/* Map section */}
-              <div className="relative" style={{ height: '55vh', minHeight: '340px' }}>
-                <ComposableMap
-                  projection="geoMercator"
-                  projectionConfig={{ scale: 140, center: [15, 30] }}
-                  style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 } as CSSProperties}
-                >
-                  <ZoomableGroup zoom={1} minZoom={1} maxZoom={4}>
-                    <Geographies geography={geoUrl}>
-                      {({ geographies }) =>
-                        geographies.map((geo, i) => {
-                          const continent = geo.properties?.continent
-                          const isHovered = hoveredContinent === continent
-                          const meta = continent ? CONTINENT_META[continent] : null
-                          return (
-                            <Geography
-                              key={`${geo.rsmKey}-${i}`}
-                              geography={geo}
-                              onClick={() => {
-                                if (continent && CONTINENT_AREAS[continent]) {
-                                  handleContinentClick(continent)
-                                }
-                              }}
-                              onMouseEnter={() => {
-                                if (continent) setHoveredContinent(continent)
-                              }}
-                              onMouseLeave={() => setHoveredContinent(null)}
-                              style={{
-                                default: {
-                                  fill: isHovered && meta
-                                    ? meta.hoverColor
-                                    : meta
-                                      ? 'oklch(0.28 0.02 60)'
-                                      : 'oklch(0.20 0.01 60)',
-                                  stroke: isHovered && meta
-                                    ? meta.labelColor
-                                    : 'oklch(1 0 0 / 0.12)',
-                                  strokeWidth: isHovered ? 1.2 : 0.5,
-                                  outline: 'none',
-                                  transition: 'all 0.2s ease',
-                                },
-                                hover: {
-                                  fill: meta ? meta.hoverColor : 'oklch(0.72 0.16 65 / 0.5)',
-                                  stroke: meta ? meta.labelColor : 'oklch(0.72 0.16 65 / 0.6)',
-                                  strokeWidth: 1.5,
-                                  outline: 'none',
-                                  cursor: continent && CONTINENT_AREAS[continent] ? 'pointer' : 'default',
-                                },
-                                pressed: {
-                                  fill: meta ? meta.hoverColor : 'oklch(0.72 0.16 65 / 0.4)',
-                                  outline: 'none',
-                                },
-                              }}
-                            />
-                          )
-                        })
-                      }
-                    </Geographies>
-
-                    {/* Continent name labels */}
-                    {CONTINENTS.map((name) => {
-                      const meta = CONTINENT_META[name]
-                      if (!meta) return null
-                      const isHovered = hoveredContinent === name
-                      return (
-                        <Marker key={name} coordinates={meta.coords}>
-                          <text
-                            textAnchor="middle"
-                            fontSize={isHovered ? 15 : 12}
-                            fontWeight={700}
-                            fontFamily="var(--font-heading)"
-                            fill={isHovered ? meta.labelColor : 'oklch(0.92 0.01 60 / 0.5)'}
-                            style={{ transition: 'all 0.2s ease', cursor: 'pointer' }}
-                            onClick={() => handleContinentClick(name)}
-                          >
-                            {name}
-                          </text>
-                        </Marker>
-                      )
-                    })}
-                  </ZoomableGroup>
-                </ComposableMap>
-
-                {/* Header overlay */}
-                <div className="pointer-events-none absolute inset-x-0 top-0 bg-gradient-to-b from-background via-background/70 to-transparent pb-16 pt-4">
-                  <div className="pointer-events-auto mx-auto max-w-7xl px-4">
-                    <h1 className="font-heading text-3xl font-bold text-foreground sm:text-4xl">
-                      Explore by Continent
-                    </h1>
-                    <p className="mt-1 text-base text-muted-foreground">
-                      Click a country or card to discover its cuisine
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <WorldMap
+                hoveredContinent={hoveredContinent}
+                setHoveredContinent={setHoveredContinent}
+                onContinentClick={handleContinentClick}
+              />
 
               {/* Continent cards section */}
               <div className="bg-gradient-to-t from-background via-background to-transparent pb-6 pt-4">

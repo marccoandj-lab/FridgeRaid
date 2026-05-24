@@ -1,7 +1,9 @@
 import type { MealSummary, MealDetail, IngredientItem, RecipeIngredient } from "@/types/meal";
 import { LOCAL_MEALS } from "@/data/local-recipes";
 
-const BASE = "https://www.themealdb.com/api/json/v1/1";
+const DIRECT_BASE = "https://www.themealdb.com/api/json/v1/1";
+const PROXY_BASE = "/api/mealdb";
+const BASE = typeof window !== "undefined" ? PROXY_BASE : DIRECT_BASE;
 
 const cache = new Map<string, MealSummary[]>();
 
