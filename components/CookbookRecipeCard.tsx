@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Heart, Trash2, User } from "lucide-react";
 import Image from "next/image";
@@ -19,7 +20,7 @@ export function CookbookRecipeCard({ recipe, isLiked, currentUserId, onLike, onD
   const thumbnail = recipe.type === "meal" ? recipe.strMealThumb : recipe.imageUrl;
   const canDelete = recipe.addedBy === currentUserId;
 
-  return (
+  const card = (
     <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.04, duration: 0.3 }}
       className="group relative overflow-hidden rounded-xl bg-card ring-1 ring-foreground/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-amber-500/5 hover:ring-amber-500/20">
       <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-amber-500/10 to-background">
@@ -34,14 +35,18 @@ export function CookbookRecipeCard({ recipe, isLiked, currentUserId, onLike, onD
         <h3 className="font-heading line-clamp-1 text-sm font-bold text-foreground group-hover:text-amber-300 transition-colors">{displayName}</h3>
         <p className="mt-1 flex items-center gap-1 text-[11px] text-muted-foreground"><User size={11} />{recipe.authorName || "Anonymous"}</p>
         <div className="mt-2 flex items-center justify-between">
-          <button onClick={() => onLike(recipe.id)} className={cn("flex items-center gap-1 rounded-full px-2 py-1 transition-colors text-xs", isLiked ? "text-red-400" : "text-muted-foreground hover:text-red-400")}>
+          <button onClick={(e) => { e.stopPropagation(); onLike(recipe.id); }} className={cn("flex items-center gap-1 rounded-full px-2 py-1 transition-colors text-xs", isLiked ? "text-red-400" : "text-muted-foreground hover:text-red-400")}>
             <Heart size={14} className={isLiked ? "fill-red-400" : ""} />{recipe.likes.length}
           </button>
           {canDelete && onDelete && (
-            <button onClick={() => onDelete(recipe.id)} className="text-muted-foreground/50 hover:text-red-400 transition-colors"><Trash2 size={13} /></button>
+            <button onClick={(e) => { e.stopPropagation(); onDelete(recipe.id); }} className="text-muted-foreground/50 hover:text-red-400 transition-colors"><Trash2 size={13} /></button>
           )}
         </div>
       </div>
     </motion.div>
   );
+
+  return recipe.type === "meal" && recipe.idMeal ? (
+    <Link href={`/recipe/${recipe.idMeal}`}>{card}</Link>
+  ) : card;
 }
