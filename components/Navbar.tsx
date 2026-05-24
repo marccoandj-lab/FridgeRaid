@@ -119,24 +119,40 @@ export function Navbar() {
         </div>
       </nav>
 
-      {/* Top mobile bar with brand */}
-      <div className="sticky top-0 z-40 border-b border-amber-500/10 bg-background/80 px-4 py-2.5 backdrop-blur-xl sm:hidden">
+      {/* Top mobile bar with brand + all nav links */}
+      <div className="sticky top-0 z-40 border-b border-amber-500/10 bg-background/80 px-4 py-2 backdrop-blur-xl sm:hidden">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <IceCream size={20} className="text-primary" />
             <span className="font-heading text-base font-bold text-foreground">Fridge Raid</span>
           </Link>
-          {!isLoading && (
-            <Link
-              href={user ? '/profile' : '/auth'}
-              className={cn(
-                'flex items-center gap-1 text-sm transition-colors',
-                isActive('/profile') ? 'text-foreground' : 'text-muted-foreground'
-              )}
-            >
-              <User size={18} />
+          <div className="flex items-center gap-3">
+            <Link href="/categories" className={cn('text-muted-foreground hover:text-foreground transition-colors', isActive('/categories') && 'text-amber-400')}>
+              <LayoutList size={18} />
             </Link>
-          )}
+            <Link href="/continents" className={cn('text-muted-foreground hover:text-foreground transition-colors', isActive('/continents') && 'text-amber-400')}>
+              <Compass size={18} />
+            </Link>
+            <Link href="/pantry" className={cn('text-muted-foreground hover:text-foreground transition-colors', isActive('/pantry') && 'text-amber-400')}>
+              <Refrigerator size={18} />
+            </Link>
+            <Link href="/favorites" className={cn('relative text-muted-foreground hover:text-foreground transition-colors', isActive('/favorites') && 'text-amber-400')}>
+              <Heart size={18} />
+              {favorites.length > 0 && (
+                <span className="absolute -right-2 -top-1.5 flex h-3.5 min-w-3.5 items-center justify-center rounded-full bg-primary px-[3px] text-[8px] font-medium text-primary-foreground">
+                  {favorites.length > 9 ? '9+' : favorites.length}
+                </span>
+              )}
+            </Link>
+            {!isLoading && (
+              <Link
+                href={user ? '/profile' : '/auth'}
+                className={cn('text-muted-foreground hover:text-foreground transition-colors', isActive('/profile') && 'text-amber-400')}
+              >
+                <User size={18} />
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </>
