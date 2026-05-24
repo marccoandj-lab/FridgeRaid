@@ -4,6 +4,7 @@ import "./globals.css";
 import { AuthProvider } from "@/lib/AuthProvider";
 import { IngredientsProvider } from "@/lib/IngredientsProvider";
 import { PwaInstallPrompt } from "@/components/PwaInstallPrompt";
+import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
 
 const playfair = Playfair_Display({
   variable: "--font-heading",
@@ -46,6 +47,7 @@ export default function RootLayout({
           <IngredientsProvider>
             {children}
             <PwaInstallPrompt />
+            <ServiceWorkerRegister />
           </IngredientsProvider>
         </AuthProvider>
       </body>

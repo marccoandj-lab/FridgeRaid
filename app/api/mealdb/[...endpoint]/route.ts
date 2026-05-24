@@ -3,12 +3,14 @@ import { NextRequest, NextResponse } from 'next/server'
 const MEALDB_BASE = 'https://www.themealdb.com/api/json/v1/1'
 
 export async function GET(
-  _request: NextRequest,
+  request: NextRequest,
   { params }: { params: Promise<{ endpoint: string[] }> }
 ) {
   const { endpoint } = await params
   const path = endpoint.join('/')
-  const url = `${MEALDB_BASE}/${path}`
+  const searchParams = request.nextUrl.searchParams.toString()
+  const queryString = searchParams ? `?${searchParams}` : ''
+  const url = `${MEALDB_BASE}/${path}${queryString}`
 
   const res = await fetch(url, { next: { revalidate: 86400 } })
   const data = await res.json()

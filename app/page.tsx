@@ -1,11 +1,11 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Sparkles, Compass } from 'lucide-react'
+import { Sparkles, Compass, Bookmark, X, AlertTriangle, Sun } from 'lucide-react'
 import { Navbar } from '@/components/Navbar'
 import { IngredientInput } from '@/components/IngredientInput'
 import { RecipeGrid } from '@/components/RecipeGrid'
@@ -16,13 +16,22 @@ import { useDailyMeals } from '@/hooks/useDailyMeals'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useAuth } from '@/lib/AuthProvider'
 import { auth } from '@/lib/firebase'
+import { usePantry } from '@/hooks/usePantry'
+import { useSavedSearches } from '@/hooks/useSavedSearches'
+import { getCurrentSeasonalIngredients } from '@/data/seasonal'
 
 export default function HomePage() {
   const router = useRouter()
   const { user, isLoading: authLoading } = useAuth()
-  const { ingredients } = useIngredients()
+  const { ingredients, addIngredient, clearAll } = useIngredients()
   const { meals, isLoading, isLoadingMore, error, hasMore, loadMore } = useMealSearch(ingredients)
   const { meals: dailyMeals, isLoading: dailyLoading } = useDailyMeals()
+  const { expiringItems } = usePantry()
+  const { searches, saveSearch, deleteSearch } = useSavedSearches()
+  const [showSaveSearch, setShowSaveSearch] = useState(false)
+  const [searchName, setSearchName] = useState('')
+  const expiring = expiringItems(3)
+  const seasonal = getCurrentSeasonalIngredients()
 
   useEffect(() => {
     if (!authLoading && !user && !auth.currentUser) router.replace('/auth')
@@ -139,15 +148,146 @@ export default function HomePage() {
           </div>
         )}
 
+        {/* Use it up */}
+        {expiring.length > 0 && (
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
+            <Link
+              href="/pantry"
+              className="flex items-center gap-3 rounded-2xl border border-amber-500/20 bg-amber-500/5 px-4 py-3 transition-all hover:bg-amber-500/10"
+            >
+              <AlertTriangle size={18} className="text-amber-400" />
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-amber-300">{expiring.length} item{expiring.length !== 1 ? 's' : ''} expiring soon</p>
+                <p className="text-xs text-muted-foreground">Check your pantry and use them up</p>
+              </div>
+              <span className="text-xs text-amber-500">&rarr;</span>
+            </Link>
+          </motion.div>
+        )}
+
+        {/* Seasonal */}
+        {seasonal.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.12 }}
+            className="mb-6 flex flex-wrap items-center gap-2"
+          >
+            <Sun size={14} className="text-amber-500" />
+            <span className="text-xs text-muted-foreground">In season now:</span>
+            {seasonal.slice(0, 8).map((item) => (
+              <button
+                key={item}
+                onClick={() => addIngredient(item)}
+                className="rounded-full bg-card px-2.5 py-1 text-[11px] text-muted-foreground ring-1 ring-foreground/10 transition-all hover:border-amber-500/30 hover:text-foreground"
+              >
+                {item}
+              </button>
+            ))}
+          </motion.div>
+        )}
+
         {/* Ingredient input */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
-          className="mb-10"
+          className="mb-6"
         >
           <IngredientInput />
         </motion.section>
+
+        {/* Saved searches */}
+        {searches.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25 }}
+            className="mb-6 flex flex-wrap items-center gap-2"
+          >
+            <Bookmark size={12} className="text-muted-foreground" />
+            {searches.map((s) => (
+              <button
+                key={s.id}
+                onClick={() => {
+                  clearAll()
+                  s.ingredients.forEach((i) => addIngredient(i))
+                }}
+                className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/15 bg-card px-3 py-1 text-xs text-muted-foreground transition-all hover:border-amber-500/30 hover:text-foreground"
+              >
+                {s.name}
+                <span
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    deleteSearch(s.id)
+                  }}
+                  className="flex h-3.5 w-3.5 items-center justify-center rounded-full text-[9px] hover:bg-red-500/20 hover:text-red-400"
+                >
+                  <X size={9} />
+                </span>
+              </button>
+            ))}
+          </motion.div>
+        )}
+
+        {/* Save search / clear */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.27 }}
+          className="mb-10 flex flex-wrap items-center gap-3"
+        >
+          {ingredients.length > 0 && (
+            <>
+              <button
+                onClick={() => setShowSaveSearch(!showSaveSearch)}
+                className="inline-flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
+              >
+                <Bookmark size={12} />
+                Save search
+              </button>
+              <button onClick={clearAll} className="text-xs text-muted-foreground transition-colors hover:text-foreground">
+                Clear all
+              </button>
+            </>
+          )}
+          <AnimatePresence>
+            {showSaveSearch && (
+              <motion.div
+                initial={{ opacity: 0, width: 0 }}
+                animate={{ opacity: 1, width: 'auto' }}
+                exit={{ opacity: 0, width: 0 }}
+                className="flex gap-2 overflow-hidden"
+              >
+                <input
+                  value={searchName}
+                  onChange={(e) => setSearchName(e.target.value)}
+                  placeholder="Search name..."
+                  className="h-7 w-36 rounded-lg border border-foreground/10 bg-card px-2.5 text-xs text-foreground placeholder:text-muted-foreground focus:border-amber-500/40 focus:outline-none"
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' && searchName.trim()) {
+                      saveSearch(searchName.trim(), ingredients)
+                      setSearchName('')
+                      setShowSaveSearch(false)
+                    }
+                  }}
+                />
+                <button
+                  onClick={() => {
+                    if (searchName.trim()) {
+                      saveSearch(searchName.trim(), ingredients)
+                      setSearchName('')
+                      setShowSaveSearch(false)
+                    }
+                  }}
+                  className="rounded-lg bg-amber-500/20 px-2.5 py-1 text-xs font-medium text-amber-400 hover:bg-amber-500/30"
+                >
+                  Save
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
 
         {/* Recipe grid */}
         <section>
