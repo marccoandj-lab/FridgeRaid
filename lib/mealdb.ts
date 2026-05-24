@@ -1,8 +1,39 @@
 import type { MealSummary, MealDetail, IngredientItem, RecipeIngredient } from "@/types/meal";
+import { LOCAL_MEALS } from "@/data/local-recipes";
 
 const BASE = "https://www.themealdb.com/api/json/v1/1";
 
 const cache = new Map<string, MealSummary[]>();
+
+function getLocalMealsByIngredient(ingredient: string): MealSummary[] {
+  const normalized = ingredient.toLowerCase();
+  return LOCAL_MEALS.filter(meal => {
+    for (let i = 1; i <= 20; i++) {
+      const ing = (meal as unknown as Record<string, string>)[`strIngredient${i}`];
+      if (ing && ing.toLowerCase().includes(normalized)) return true;
+    }
+    return false;
+  }).map(m => ({
+    idMeal: m.idMeal,
+    strMeal: m.strMeal,
+    strMealThumb: m.strMealThumb
+  }));
+}
+
+function getLocalMealById(id: string): MealDetail | null {
+  return LOCAL_MEALS.find(m => m.idMeal === id) ?? null;
+}
+
+function searchLocalMealsByName(name: string): MealSummary[] {
+  const normalized = name.toLowerCase();
+  return LOCAL_MEALS.filter(m => 
+    m.strMeal.toLowerCase().includes(normalized)
+  ).map(m => ({
+    idMeal: m.idMeal,
+    strMeal: m.strMeal,
+    strMealThumb: m.strMealThumb
+  }));
+}
 
 async function fetchJson<T>(url: string): Promise<T | null> {
   try {
@@ -23,15 +54,20 @@ export async function fetchMealsByIngredient(
   const data = await fetchJson<{ meals: MealSummary[] | null }>(
     `${BASE}/filter.php?i=${encodeURIComponent(ingredient)}`
   );
-  const raw = data?.meals ?? [];
+  const remoteMeals = data?.meals ?? [];
+  const localMeals = getLocalMealsByIngredient(ingredient);
+  
+  const allMeals = [...remoteMeals, ...localMeals];
   const seen = new Set<string>();
   const meals: MealSummary[] = [];
-  for (const m of raw) {
+  
+  for (const m of allMeals) {
     if (!seen.has(m.idMeal)) {
       seen.add(m.idMeal);
       meals.push(m);
     }
   }
+  
   cache.set(ingredient, meals);
   return meals;
 }
@@ -39,6 +75,10 @@ export async function fetchMealsByIngredient(
 export async function fetchMealById(
   id: string
 ): Promise<MealDetail | null> {
+  if (id.startsWith("local-")) {
+    return getLocalMealById(id);
+  }
+
   const data = await fetchJson<{ meals: MealDetail[] | null }>(
     `${BASE}/lookup.php?i=${encodeURIComponent(id)}`
   );
@@ -51,7 +91,21 @@ export async function searchMealsByName(
   const data = await fetchJson<{ meals: MealSummary[] | null }>(
     `${BASE}/search.php?s=${encodeURIComponent(name)}`
   );
-  return data?.meals ?? [];
+  const remoteMeals = data?.meals ?? [];
+  const localMeals = searchLocalMealsByName(name);
+  
+  const allMeals = [...remoteMeals, ...localMeals];
+  const seen = new Set<string>();
+  const meals: MealSummary[] = [];
+  
+  for (const m of allMeals) {
+    if (!seen.has(m.idMeal)) {
+      seen.add(m.idMeal);
+      meals.push(m);
+    }
+  }
+  
+  return meals;
 }
 
 export async function fetchIngredientList(): Promise<IngredientItem[]> {
